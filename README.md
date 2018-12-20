@@ -36,7 +36,7 @@ targets:
     - main:
       files: 
         - "src/main.cpp"
-      linkLibs:
+      linkLibraries:
         - grok
 
   libraries:
