@@ -23,10 +23,10 @@ target_link_libraries(main grok)
 
 ```yaml
 name:                  example
+version:               0.1.0
 description:           An example of a more declarative CMakeLists configuration
 homepage:              http://github.com/laserpants/foomake#readme
 languages:             CXX
-version:               0.1.0
 cmakeMinimumRequired:  '3.2'
 
 executables:
