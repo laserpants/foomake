@@ -1,0 +1,36 @@
+name:                foomake
+version:             0.1.0.0
+synopsis:            Why not make CMake build configurations more declarative?
+description:         See README file
+homepage:            http://github.com/laserpants/foomake#readme
+license:             BSD3
+author:              Heikki Johannes Hildén
+maintainer:          hildenjohannes@gmail.com
+category:            Configuration
+extra-source-files:
+- README.md
+
+dependencies:
+  - base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+  #  dependencies:
+
+executables:
+  foomake:
+    source-dirs:      src
+    main:             Main.hs
+    dependencies:
+    - foomake
+
+tests:
+  foomake-test:
+    main:             Main.hs
+    source-dirs:      test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - foomake
