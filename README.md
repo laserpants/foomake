@@ -21,11 +21,10 @@ target_link_libraries(main grok)
 &hellip;we could write something like:
 
 ```yaml
-project:
-  name: example
-  languages:
-    - CXX
-  version: 0.1.0
+name: example
+languages:
+  - CXX
+version: 0.1.0
 
 cmake: 
   minimumRequired:
