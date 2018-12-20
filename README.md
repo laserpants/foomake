@@ -3,6 +3,7 @@
 Wouldn't it be nice to have a more declarative way to express CMake build requirements? So that, instead of&hellip;
 
 ```cmake
+# CMakeLists.txt 
 cmake_minimum_required(VERSION 3.2)
 
 project(example VERSION 0.1.0 LANGUAGES CXX)
