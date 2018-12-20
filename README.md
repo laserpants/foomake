@@ -32,7 +32,7 @@ cmakeMinimumRequired:  '3.2'
 executables:
   - main:
     files: 
-      - 'src/main.cpp'
+      - src/main.cpp
     linkLibraries:
       - grok
 
@@ -40,7 +40,7 @@ libraries:
   - grok:
     type: static
     files:
-      - 'src/laserpants/grok.cpp'
+      - src/laserpants/grok.cpp
     includeDirs: 
       - path: '${CMAKE_CURRENT_SOURCE_DIR}/include'
         scope: public
