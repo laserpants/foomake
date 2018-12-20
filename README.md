@@ -1,6 +1,6 @@
 # foomake
 
-Wouldn't it be nice to have a more declarative way to express CMake build requirements? So that, instead of
+Wouldn't it be nice to have a more declarative way to express CMake build requirements? So that, instead of&hellip;
 
 ```cmake
 cmake_minimum_required(VERSION 3.2)
@@ -18,7 +18,7 @@ add_executable(main src/main.cpp)
 target_link_libraries(main grok)
 ```
 
-&hellip; we could write something like:
+&hellip;we could write something like:
 
 ```yaml
 project:
