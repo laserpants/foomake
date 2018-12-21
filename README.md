@@ -66,6 +66,7 @@ Or, for those who prefer JSON:
             ],
             "linkLibraries": [ "grok" ]
         }
+    },
     "libraries": {
         "grok": {
             "type": "static",
