@@ -4,6 +4,7 @@ Wouldn't it be nice to have a more declarative way to express CMake build requir
 
 ```cmake
 # CMakeLists.txt
+
 cmake_minimum_required(VERSION 3.2)
 
 project(example VERSION 0.1.0 LANGUAGES CXX)
@@ -24,20 +25,20 @@ target_link_libraries(main grok)
 ```yaml
 name:                  example
 version:               0.1.0
-description:           An example of a declarative CMakeLists configuration format
+description:           An example of a declarative CMakeLists configuration
 homepage:              http://github.com/laserpants/foomake#readme
 languages:             CXX
 cmakeMinimumRequired:  '3.2'
 
 executables:
-  - main:
+  main:
     files:
       - src/main.cpp
     linkLibraries:
       - grok
 
 libraries:
-  - grok:
+  grok:
     type: static
     files:
       - src/laserpants/grok.cpp
@@ -55,7 +56,7 @@ Or, for those who prefer JSON:
 {
     "name": "example",
     "version": "0.1.0",
-    "description": "An example of a declarative CMakeLists configuration format",
+    "description": "An example of a declarative CMakeLists configuration",
     "homepage": "http://github.com/laserpants/foomake#readme",
     "languages": ["CXX"],
     "cmakeMinimumRequired": "3.2",

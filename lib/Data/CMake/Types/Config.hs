@@ -2,26 +2,27 @@
 module Data.CMake.Types.Config where
 
 import Data.Aeson
+import Data.Aeson.Types
 import Data.CMake.Types.CMake
 import Data.CMake.Types.Install
 import Data.CMake.Types.Project
 import Data.CMake.Types.Targets
 import Data.CMake.Types.Variables
+import Data.Text
 
 data Config = Config
---  { project   :: !(Maybe Project)
---  , cmake     :: !(Maybe CMake)
---  , variables :: !(Maybe Variables)
---  , install   :: !(Maybe Install)
---  , targets   :: !Targets
---  } deriving (Eq, Show)
-  deriving (Eq, Show)
+  { project   :: !Project
+  , cmake     :: !CMake
+  , targets   :: !Targets
+  , variables :: !Variables
+  , install   :: !Install
+  } deriving (Eq, Show)
 
 instance FromJSON Config where
-  parseJSON (Object v) = pure Config
---    Config <$> v .:? "project"
---           <*> v .:? "cmake"
---           <*> v .:? "variables"
---           <*> v .:? "install"
---           <*> v .:? "targets" .!= Targets [] []
+  parseJSON (Object v) =
+    Config <$> parseJSON (Object v)
+           <*> parseJSON (Object v)
+           <*> parseJSON (Object v)
+           <*> v .:? "variables" .!= Variables []
+           <*> v .:? "install"   .!= Install
   parseJSON _ = fail "configuration must be an object"
