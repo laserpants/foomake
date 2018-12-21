@@ -15,14 +15,21 @@ dependencies:
 
 library:
   source-dirs: lib
-  #  dependencies:
+  - aeson >= 1.3 && < 2
+  - bytestring >= 0.10 && < 1
+  - text >= 1.2 && < 2
+  - unordered-containers >= 0.2.9 && < 1
+  - yaml >= 0.8 && < 1
 
 executables:
   foomake:
     source-dirs:      src
     main:             Main.hs
     dependencies:
+    - aeson >= 1.3 && < 2
+    - bytestring >= 0.10 && < 1
     - foomake
+    - yaml >= 0.8 && < 1
 
 tests:
   foomake-test:

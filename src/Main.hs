@@ -2,6 +2,11 @@ module Main where
 
 import Data.CMake.Types
 
+import qualified Data.ByteString as ByteString
+import qualified Data.Yaml as Yaml
+
 main :: IO ()
 main = do
-  putStrLn "hello world"
+  file <- ByteString.readFile "tmp.yaml"
+  config <- Yaml.decodeThrow file
+  print (config :: Config)
