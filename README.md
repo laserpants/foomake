@@ -3,7 +3,7 @@
 Wouldn't it be nice to have a more declarative way to express CMake build requirements? So that, instead of&hellip;
 
 ```cmake
-# CMakeLists.txt 
+# CMakeLists.txt
 cmake_minimum_required(VERSION 3.2)
 
 project(example VERSION 0.1.0 LANGUAGES CXX)
@@ -31,7 +31,7 @@ cmakeMinimumRequired:  '3.2'
 
 executables:
   - main:
-    files: 
+    files:
       - src/main.cpp
     linkLibraries:
       - grok
@@ -41,7 +41,7 @@ libraries:
     type: static
     files:
       - src/laserpants/grok.cpp
-    includeDirs: 
+    includeDirs:
       - path: '${CMAKE_CURRENT_SOURCE_DIR}/include'
         scope: public
 
