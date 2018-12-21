@@ -48,3 +48,38 @@ libraries:
 variables:
   default_build_type: Release
 ```
+
+Or, for those who prefer JSON:
+
+```json
+{
+    "name": "example",
+    "version": "0.1.0",
+    "description": "An example of a declarative CMakeLists configuration format",
+    "homepage": "http://github.com/laserpants/foomake#readme",
+    "languages": ["CXX"],
+    "cmakeMinimumRequired": "3.2",
+    "executables": {
+        "main": {
+            "files": [
+                "src/main.cpp"
+            ],
+            "linkLibraries": [ "grok" ]
+        }
+    "libraries": {
+        "grok": {
+            "type": "static",
+            "files": [
+                "src/laserpants/grok.cpp"
+            ],
+            "includeDirs": [{
+                "path": "${CMAKE_CURRENT_SOURCE_DIR}/include",
+                "scope": "public"
+            }]
+        }
+    },
+    "variables": {
+        "default_build_type": "Release"
+    }
+}
+```
