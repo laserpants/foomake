@@ -94,11 +94,11 @@ Or, for those who prefer JSON:
 
 | Key                     | Type                     | Description                                     |
 |-------------------------|--------------------------|-------------------------------------------------|
-| name<sup>&dagger;</sup> | string                   | Sets the `PROJECT_NAME` variable                |
-| version                 | string                   | Sets the `PROJECT_VERSION` variable             |
-| description             | string                   | Sets the `CMAKE_PROJECT_DESCRIPTION` variable   |
-| homepage                | string                   | Sets the `CMAKE_PROJECT_HOMEPAGE_URL` variable  |
-| languages               | list (or string)         | Sets the project `LANGUAGES`                    |
+| name<sup>&dagger;</sup> | string                   | Set the `PROJECT_NAME` variable                |
+| version                 | string                   | Set the `PROJECT_VERSION` variable             |
+| description             | string                   | Set the `CMAKE_PROJECT_DESCRIPTION` variable   |
+| homepage                | string                   | Set the `CMAKE_PROJECT_HOMEPAGE_URL` variable  |
+| languages               | list (or string)         | Set the project `LANGUAGES`                    |
 | cmakeMinimumRequired    | dict (or string)         | Set the minimum required version of CMake       |
 | executables             | dict                     | Executable targets (binaries)                   |
 | libraries               | dict                     | Library targets                                 |
