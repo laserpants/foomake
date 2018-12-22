@@ -247,7 +247,6 @@ List entries should be dictionaries of the following form.
 Example:
 
 ```yaml
-name: example
 configure:
   - input:  'config.h.in'
     output: 'config.h'
