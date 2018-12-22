@@ -189,10 +189,10 @@ executables:
 
 #### Executable dictionary properties
 
-| Key                  | Type                     | Required | Default | Description                                   |
-|----------------------|--------------------------|:--------:|---------|-----------------------------------------------|
-| files                | list                     |          |         |                                               |
-| includeDirectories   | dict                     |          |         | ‘includeDirs’ can also be used as a shorthand |
+| Key                  | Type                     | Required | Default | Alias        | Description                                    |
+|----------------------|--------------------------|:--------:|---------|--------------|------------------------------------------------|
+| files                | list                     |          |         |              |                                                |
+| includeDirectories   | dict                     |          |         | includeDirs  |                                                |
 
 ---
 
@@ -208,11 +208,11 @@ libraries:
 
 #### Library dictionary properties
 
-| Key                  | Type                               | Required | Default | Description                                   |
-|----------------------|------------------------------------|:--------:|---------|-----------------------------------------------|
-| files                | list                               |          |         |                                               |
-| includeDirectories   | dict                               |          |         | ‘includeDirs’ can also be used as a shorthand |
-| type                 | static &vert; shared &vert; module |          | static  |                                               |
+| Key                  | Type                               | Required | Default | Alias        | Description                                   |
+|----------------------|------------------------------------|:--------:|---------|--------------|-----------------------------------------------|
+| files                | list                               |          |         |              |                                               |
+| includeDirectories   | dict                               |          |         | includeDirs  |                                               |
+| type                 | static &vert; shared &vert; module |          | static  |              |                                               |
 
 ---
 
