@@ -98,7 +98,7 @@ Or, for those who prefer JSON:
 | version              | string                   | Sets the `PROJECT_VERSION` variable            |
 | description          | string                   | Sets the `CMAKE_PROJECT_DESCRIPTION` variable  |
 | homepage             | string                   | Sets the `CMAKE_PROJECT_HOMEPAGE_URL` variable |
-| languages            | list (or string)         | Sets the project `LANGUAGES`. A list of languages that your project supports |
+| languages            | list (or string)         | Sets the project `LANGUAGES`                   |
 | cmakeMinimumRequired | dict (or string)         | Set the minimum required version of CMake      |
 | executables          | dict                     | Executable targets (binaries)                  |
 | libraries            | dict                     | Library targets                                |
@@ -117,10 +117,19 @@ None of the top-level keys are required.
 
 ### `languages`
 
+A list of languages that your project supports. For example,
+
 ```yaml
+name: example
 languages:
   - CXX
   - Fortran
+```
+
+&hellip;translates to
+
+```cmake
+project(example LANGUAGES CXX Fortran)
 ```
 
 A string can be used as a shorthand for singleton lists:
