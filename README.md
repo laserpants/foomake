@@ -269,6 +269,8 @@ variables:
 
 ### `type`
 
+---
+
 ## What's missing?
 
 A lot! What about those cases where control flow and conditional statements are unavoidable?
