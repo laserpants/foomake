@@ -86,20 +86,22 @@ Or, for those who prefer JSON:
 }
 ```
 
-## Properties
+## Top-level properties
 
-| Property             | Type                  | Required |   |
-|----------------------|-----------------------|:--------:|---|
-| name                 | string                |          | `PROJECT_NAME` |
-| version              | string                |          | `PROJECT_VERSION` |
-| description          | string                |          |   |
-| homepage             | string                |          |   |
-| languages            | array &vert; string   |          |   |
-| cmakeMinimumRequired | object &vert; string  |          |   |
-| executables          | object                |          | Executable targets (a/k/a binaries) |
-| libraries            | object                |          | Library targets               |
-| variables            | object                |          |   |
-| install              | object                |          |   |
+| Property             | Type                     | Description |
+|----------------------|--------------------------|-------------|
+| name                 | `string`                 | Sets the `PROJECT_NAME` variable |
+| version              | `string`                 | Sets the `PROJECT_VERSION` variable |
+| description          | `string`                 |   |
+| homepage             | `string`                 |   |
+| languages            | `array` &vert; `string`  |   |
+| cmakeMinimumRequired | `object` &vert; `string` |   |
+| executables          | `object`                 | Executable targets (binaries) |
+| libraries            | `object`                 | Library targets               |
+| variables            | `object`                 |   |
+| install              | `object`                 |   |
+
+None of the top-level properties are required.
 
 ### `name`
 
