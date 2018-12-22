@@ -105,7 +105,7 @@ Or, for those who prefer JSON:
 | variables              | dict                     |                                                |
 | install                | dict                     |                                                |
 
-<sup>&dagger;</sup> required
+&dagger;) **required**
 
 ---
 
