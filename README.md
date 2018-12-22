@@ -96,7 +96,7 @@ Or, for those who prefer JSON:
 | version              | string                   | Sets the `PROJECT_VERSION` variable            |
 | description          | string                   | Sets the `CMAKE_PROJECT_DESCRIPTION` variable  |
 | homepage             | string                   | Sets the `CMAKE_PROJECT_HOMEPAGE_URL` variable |
-| languages            | list (or string)         | A list of languages that your project supports |
+| languages            | list (or string)         | A list of languages that your project supports. A string can be used as a shorthand for singleton lists. |
 | cmakeMinimumRequired | dict (or string)         | Set the minimum required version of CMake      |
 | executables          | dict                     | Executable targets (binaries)                  |
 | libraries            | dict                     | Library targets                                |
