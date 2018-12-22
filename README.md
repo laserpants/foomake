@@ -320,5 +320,5 @@ configure:
   - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'
     output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'
     arguments:
-      '@ONLY': true
+      @ONLY: true
 ```
