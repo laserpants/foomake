@@ -86,18 +86,18 @@ Or, for those who prefer JSON:
 }
 ```
 
-## Property spec.
+## Properties
 
 | Property             | Type                  | Required |   |
 |----------------------|-----------------------|:--------:|---|
-| name                 | string                |          |   |
-| version              | string                |          |   |
+| name                 | string                |          | `PROJECT_NAME` |
+| version              | string                |          | `PROJECT_VERSION` |
 | description          | string                |          |   |
 | homepage             | string                |          |   |
 | languages            | array &vert; string   |          |   |
 | cmakeMinimumRequired | object &vert; string  |          |   |
-| executables          | object                |          |   |
-| libraries            | object                |          |   |
+| executables          | object                |          | Executable targets (a/k/a binaries) |
+| libraries            | object                |          | Library targets               |
 | variables            | object                |          |   |
 | install              | object                |          |   |
 
