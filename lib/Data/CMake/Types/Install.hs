@@ -1,5 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Data.CMake.Types.Install where
+module Data.CMake.Types.Install 
+  ( Install(..)
+  ) where
 
 import Data.Aeson
 import Data.Text

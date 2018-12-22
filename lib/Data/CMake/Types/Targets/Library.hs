@@ -1,5 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Data.CMake.Types.Targets.Library where
+module Data.CMake.Types.Targets.Library 
+  ( Library(..)
+  ) where
 
 import Data.Aeson
 import Data.CMake.Types.Targets.IncludeDirectory

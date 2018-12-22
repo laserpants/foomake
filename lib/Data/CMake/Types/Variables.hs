@@ -1,5 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Data.CMake.Types.Variables where
+module Data.CMake.Types.Variables 
+  ( Variables(..) 
+  ) where
 
 import Data.Aeson
 import Data.Aeson.Types

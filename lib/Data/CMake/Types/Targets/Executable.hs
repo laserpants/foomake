@@ -1,5 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Data.CMake.Types.Targets.Executable where
+module Data.CMake.Types.Targets.Executable 
+  ( Executable(..)
+  ) where
 
 import Control.Applicative ((<|>))
 import Data.Aeson

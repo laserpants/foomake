@@ -1,5 +1,9 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Data.CMake.Types.Targets.IncludeDirectory where
+module Data.CMake.Types.Targets.IncludeDirectory 
+  ( IncludeDirectory(..)
+  , Scope(..)
+  , includeDirectories
+  ) where
 
 import Control.Applicative ((<|>))
 import Control.Monad (guard)
