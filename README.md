@@ -290,8 +290,7 @@ configure_file (
   "${PROJECT_BINARY_DIR}/TutorialConfig.h"
   )
  
-# add the binary tree to the search path for include files so that we will 
-# find TutorialConfig.h
+# add the binary tree to the search path for include files so that we will find TutorialConfig.h
 include_directories("${PROJECT_BINARY_DIR}")
  
 # add the executable
@@ -310,8 +309,8 @@ executables:
     files: 
       - tutorial.cxx
     includeDirectories:
-      - '${PROJECT_BINARY_DIR}' # add the binary tree to the search path for 
-                                # include files so that we will find TutorialConfig.h
+      - '${PROJECT_BINARY_DIR}' # add the binary tree to the search path for include files so 
+                                # that we will find TutorialConfig.h
 ```
 
 What about `configure_file`?
