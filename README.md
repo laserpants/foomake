@@ -234,23 +234,23 @@ variables:
 
 ### `configure`
 
-A list of files to perform variable substitution on. See `[configure_file](https://cmake.org/cmake/help/latest/command/configure_file.html?highlight=configure_file)`
+A list of files to perform variable substitution on. See `[configure_file](https://cmake.org/cmake/help/latest/command/configure_file.html?highlight=configure_file)`.
 
 List entries should be dictionaries of the following form.
 
-| Key                  | Type                     | Required | Description                                    |
-|----------------------|--------------------------|:--------:|------------------------------------------------|
-| input                | string                   | yes      |                                                |
-| output               | string                   | yes      |                                                |
-| arguments            | dict                     |          |                                                |
+| Key                  | Type                     | Required | Description                                        |
+|----------------------|--------------------------|:--------:|----------------------------------------------------|
+| input                | string                   | yes      |                                                    |
+| output               | string                   | yes      |                                                    |
+| arguments            | dict                     |          | Arguments accepted by the `configure_file` command |
 
 Example:
 
 ```yaml
 name: example
 configure:
-  - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'
-    output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'
+  - input:  'config.h.in'
+    output: 'config.h'
     arguments:
       @ONLY: true
 ```
@@ -264,7 +264,7 @@ configure:
 | Key                  | Type                     | Required | Default | Alias        | Description                                    |
 |----------------------|--------------------------|:--------:|---------|--------------|------------------------------------------------|
 | files                | list                     |          |         |              |                                                |
-| includeDirectories   | dict                     |          |         | includeDirs  |                                                |
+| includeDirectories   | list                     |          |         | includeDirs  |                                                |
 
 ---
 
@@ -281,7 +281,7 @@ configure:
 | Key                  | Type                               | Required | Default | Alias        | Description                                   |
 |----------------------|------------------------------------|:--------:|---------|--------------|-----------------------------------------------|
 | files                | list                               |          |         |              |                                               |
-| includeDirectories   | dict                               |          |         | includeDirs  |                                               |
+| includeDirectories   | list                               |          |         | includeDirs  |                                               |
 | type                 | static &vert; shared &vert; module |          | static  |              |                                               |
 
 ---
