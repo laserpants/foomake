@@ -122,9 +122,9 @@ description: One project to rule them all
 translates to:
 
 ```cmake
-project(Your project 
-  VERSION 
-    1.3 
+project(Your project
+  VERSION
+    1.3
   DESCRIPTION
     One project to rule them all
   )
@@ -287,16 +287,16 @@ project (Tutorial)
 # the version number
 set (Tutorial_VERSION_MAJOR 1)
 set (Tutorial_VERSION_MINOR 0)
- 
+
 # configure a header file to pass some of the CMake settings to the source code
 configure_file (
   "${PROJECT_SOURCE_DIR}/TutorialConfig.h.in"
   "${PROJECT_BINARY_DIR}/TutorialConfig.h"
   )
- 
+
 # add the binary tree to the search path for include files so that we will find TutorialConfig.h
 include_directories("${PROJECT_BINARY_DIR}")
- 
+
 # add the executable
 add_executable(Tutorial tutorial.cxx)
 ```
@@ -310,14 +310,15 @@ cmakeMinimumRequired:
 
 executables:
   Tutorial:                         # add the executable
-    files: 
+    files:
       - tutorial.cxx
     includeDirectories:
-      - '${PROJECT_BINARY_DIR}'     # add the binary tree to the search path for include files so 
+      - '${PROJECT_BINARY_DIR}'     # add the binary tree to the search path for include files so
                                     # that we will find TutorialConfig.h
 
 configure:
-  - file: 
-    - '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'
-    - '${PROJECT_BINARY_DIR}/TutorialConfig.h'
+  - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'
+    output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'
+    arguments:
+      '@ONLY': true
 ```
