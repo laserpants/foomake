@@ -86,22 +86,22 @@ Or, for those who prefer JSON:
 }
 ```
 
-## Top-level properties
+## Top-level keys
 
-| Property             | Type                     | Description |
+| Key                  | Type                     | Description |
 |----------------------|--------------------------|-------------|
-| name                 | `string`                 | Sets the `PROJECT_NAME` variable |
-| version              | `string`                 | Sets the `PROJECT_VERSION` variable |
-| description          | `string`                 |   |
-| homepage             | `string`                 |   |
-| languages            | `array` &vert; `string`  |   |
-| cmakeMinimumRequired | `object` &vert; `string` |   |
-| executables          | `object`                 | Executable targets (binaries) |
-| libraries            | `object`                 | Library targets               |
-| variables            | `object`                 |   |
-| install              | `object`                 |   |
+| name                 | string                   | Sets the `PROJECT_NAME` variable    |
+| version              | string                   | Sets the `PROJECT_VERSION` variable |
+| description          | string                   | Sets the `CMAKE_PROJECT_DESCRIPTION` varaible |
+| homepage             | string                   | Sets the `CMAKE_PROJECT_HOMEPAGE_URL` variable |
+| languages            | list (or string)         |             |
+| cmakeMinimumRequired | dict (or string)         |             |
+| executables          | dict                     | Executable targets (binaries) |
+| libraries            | dict                     | Library targets               |
+| variables            | dict                     |             |
+| install              | dict                     |             |
 
-None of the top-level properties are required.
+None of the top-level keys are required.
 
 ### `name`
 
@@ -136,7 +136,38 @@ cmakeMinimumRequired: '3.2'
 
 ### `executables`
 
+```yaml
+executables:
+  foo:
+    # ...
+  baz:
+    # ...
+```
+
+#### Executable dictionary properties
+
+| Key                  | Type                     | Required | Default | Description |
+|----------------------|--------------------------|:--------:|---------|-------------|
+| files                | list                     |          |         |             |
+| includeDirectories   | dict                     |          |         |             |
+
 ### `libraries`
+
+```yaml
+libraries:
+  grok:
+    # ...
+  bot:
+    # ...
+```
+
+#### Library dictionary properties
+
+| Key                  | Type                               | Required | Default | Description |
+|----------------------|------------------------------------|:--------:|---------|-------------|
+| files                | list                               |          |         |             |
+| includeDirectories   | dict                               |          |         |             |
+| type                 | static &vert; shared &vert; module |          | static  |             |
 
 ### `variables`
 
