@@ -9,7 +9,7 @@ cmake_minimum_required(VERSION 3.2)
 
 project(example VERSION 0.1.0 LANGUAGES CXX)
 
-set(default_build_type "Release")
+set(DEFAULT_BUILD_TYPE "Release")
 
 add_library(grok STATIC src/laserpants/grok.cpp)
 
@@ -49,7 +49,7 @@ libraries:
         scope: public
 
 variables:
-  default_build_type: Release
+  DEFAULT_BUILD_TYPE: Release
 ```
 
 <!--
@@ -84,7 +84,7 @@ Or, for those who prefer JSON:
         }
     },
     "variables": {
-        "default_build_type": "Release"
+        "DEFAULT_BUILD_TYPE": "Release"
     }
 }
 ```
