@@ -394,8 +394,8 @@ add_library(MathFunctions mysqrt.cxx)
 ```yaml
 name: Tutorial
 version: '1.0'                      # the version number
-subdirectories:
-  - MathFunctions  # ???
+imports:
+  - MathFunctions  # add_subdirectory ???
 
 cmakeMinimumRequired:
   version: '2.6'
