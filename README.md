@@ -252,7 +252,7 @@ List entries should be dictionaries of the following form.
 
 | Key                  | Type                     | Required | Description                                        |
 |----------------------|--------------------------|:--------:|----------------------------------------------------|
-| file                 | list                     | yes      | A two-element list of the form [input, output]     |
+| file                 | list                     | yes      | A two-element list of the form [ input, output ]   |
 | arguments            | dict                     |          | Arguments accepted by the `configure_file` command |
 
 Example:
