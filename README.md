@@ -103,6 +103,7 @@ Or, for those who prefer JSON:
 | executables             | dict                     | Executable targets (binaries)                   |
 | libraries               | dict                     | Library targets                                 |
 | variables               | dict                     |                                                 |
+| options                 | dict                     |                                                 |
 | install                 | dict                     |                                                 |
 | configure               | list                     | Copy and perform variable substitution on files |
 
