@@ -136,6 +136,10 @@ cmakeMinimumRequired:
 cmakeMinimumRequired: '3.2'
 ```
 
+```yaml
+cmakeMinimumRequired: '3.1...3.13'
+```
+
 ### `executables`
 
 ```yaml
@@ -173,4 +177,22 @@ libraries:
 
 ### `variables`
 
+```yaml
+variables:
+  MY_VARIABLE: rocks
+```
+
+```cmake
+set(MY_VARIABLE "rocks")
+```
+
+#### Dictionary form
+
+```yaml
+variables:
+  MY_VARIABLE:
+    value: rocks
+```
+
 ### `install`
+
