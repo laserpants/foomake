@@ -52,6 +52,7 @@ variables:
   default_build_type: Release
 ```
 
+<!--
 Or, for those who prefer JSON:
 
 ```json
@@ -87,6 +88,7 @@ Or, for those who prefer JSON:
     }
 }
 ```
+-->
 
 ## Top-level keys
 
