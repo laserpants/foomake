@@ -92,18 +92,18 @@ Or, for those who prefer JSON:
 
 ## Top-level keys
 
-| Key                    | Type                     | Description                                    |
-|------------------------|--------------------------|------------------------------------------------|
+| Key                     | Type                     | Description                                    |
+|-------------------------|--------------------------|------------------------------------------------|
 | name<sup>&dagger;</sup> | string                   | Sets the `PROJECT_NAME` variable               |
-| version                | string                   | Sets the `PROJECT_VERSION` variable            |
-| description            | string                   | Sets the `CMAKE_PROJECT_DESCRIPTION` variable  |
-| homepage               | string                   | Sets the `CMAKE_PROJECT_HOMEPAGE_URL` variable |
-| languages              | list (or string)         | Sets the project `LANGUAGES`                   |
-| cmakeMinimumRequired   | dict (or string)         | Set the minimum required version of CMake      |
-| executables            | dict                     | Executable targets (binaries)                  |
-| libraries              | dict                     | Library targets                                |
-| variables              | dict                     |                                                |
-| install                | dict                     |                                                |
+| version                 | string                   | Sets the `PROJECT_VERSION` variable            |
+| description             | string                   | Sets the `CMAKE_PROJECT_DESCRIPTION` variable  |
+| homepage                | string                   | Sets the `CMAKE_PROJECT_HOMEPAGE_URL` variable |
+| languages               | list (or string)         | Sets the project `LANGUAGES`                   |
+| cmakeMinimumRequired    | dict (or string)         | Set the minimum required version of CMake      |
+| executables             | dict                     | Executable targets (binaries)                  |
+| libraries               | dict                     | Library targets                                |
+| variables               | dict                     |                                                |
+| install                 | dict                     |                                                |
 
 &dagger;) **required**
 
@@ -268,3 +268,33 @@ variables:
 ---
 
 ### `type`
+
+## What's missing?
+
+A lot. What about those cases where control flow and conditional statements are unavoidable?
+
+## Examples
+
+(taken from https://cmake.org/cmake-tutorial/)
+
+```cmake
+cmake_minimum_required (VERSION 2.6)
+project (Tutorial)
+# The version number.
+set (Tutorial_VERSION_MAJOR 1)
+set (Tutorial_VERSION_MINOR 0)
+ 
+# configure a header file to pass some of the CMake settings
+# to the source code
+configure_file (
+  "${PROJECT_SOURCE_DIR}/TutorialConfig.h.in"
+  "${PROJECT_BINARY_DIR}/TutorialConfig.h"
+  )
+ 
+# add the binary tree to the search path for include files
+# so that we will find TutorialConfig.h
+include_directories("${PROJECT_BINARY_DIR}")
+ 
+# add the executable
+add_executable(Tutorial tutorial.cxx)
+```
