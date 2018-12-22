@@ -3,7 +3,9 @@ version:               0.1.0
 description:           An example of a declarative CMakeLists configuration format
 homepage:              http://github.com/laserpants/foomake#readme
 languages:             CXX
-cmakeMinimumRequired:  '3.2'
+
+cmakeMinimumRequired:  
+  version: '3.2'
 
 executables:
   main:

@@ -134,9 +134,9 @@ main = do
         it "should be a list" $
           expectThatRight "name: test\nexecutables:\n  main:\n    includeDirectories:\n    - include/bananas\n    - include/apples\n    - include/oranges" $
             \config -> Prelude.head (executables (targets config))
-              `shouldBe` ("main", Executable [ IncludeDirectory "include/bananas" "public"
-                                             , IncludeDirectory "include/apples"  "public"
-                                             , IncludeDirectory "include/oranges" "public" ])
+              `shouldBe` ("main", Executable [ IncludeDirectory "include/bananas" Public
+                                             , IncludeDirectory "include/apples"  Public
+                                             , IncludeDirectory "include/oranges" Public ])
 
       -- name: test
       -- executables:
@@ -151,9 +151,9 @@ main = do
         it "should be a list" $
           expectThatRight "name: test\nexecutables:\n  main:\n    includeDirs:\n    - include/bananas\n    - include/apples\n    - include/oranges" $
             \config -> Prelude.head (executables (targets config))
-              `shouldBe` ("main", Executable [ IncludeDirectory "include/bananas" "public"
-                                             , IncludeDirectory "include/apples"  "public"
-                                             , IncludeDirectory "include/oranges" "public" ])
+              `shouldBe` ("main", Executable [ IncludeDirectory "include/bananas" Public
+                                             , IncludeDirectory "include/apples"  Public
+                                             , IncludeDirectory "include/oranges" Public ])
 
       -- name: test
       -- executables:
@@ -184,8 +184,8 @@ main = do
         it "should be a list" $
           expectThatRight "name: test\nexecutables:\n  main:\n    includeDirs:\n      - path: include/apples\n        scope: public\n      - path: include/oranges\n        scope: private" $
             \config -> Prelude.head (executables (targets config))
-              `shouldBe` ("main", Executable [ IncludeDirectory "include/apples"  "public"
-                                             , IncludeDirectory "include/oranges" "private" ])
+              `shouldBe` ("main", Executable [ IncludeDirectory "include/apples"  Public 
+                                             , IncludeDirectory "include/oranges" Private ])
 
       -- name: test
       -- executables:
