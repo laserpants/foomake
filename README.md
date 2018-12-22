@@ -107,13 +107,11 @@ Or, for those who prefer JSON:
 
 None of the top-level keys are required.
 
-### `name`
+---
 
-### `version`
+### `name`, `version`, `description`, `homepage`
 
-### `description`
-
-### `homepage`
+---
 
 ### `languages`
 
@@ -138,6 +136,8 @@ A string can be used as a shorthand for singleton lists:
 languages: CXX
 ```
 
+---
+
 ### `cmakeMinimumRequired`
 
 ```yaml
@@ -157,6 +157,8 @@ Or to specify a range:
 cmakeMinimumRequired: '3.1...3.13'
 ```
 
+---
+
 ### `executables`
 
 ```yaml
@@ -173,6 +175,8 @@ executables:
 |----------------------|--------------------------|:--------:|---------|-----------------------------------------------|
 | files                | list                     |          |         |                                               |
 | includeDirectories   | dict                     |          |         | ‘includeDirs’ can also be used as a shorthand |
+
+---
 
 ### `libraries`
 
@@ -191,6 +195,8 @@ libraries:
 | files                | list                               |          |         |                                               |
 | includeDirectories   | dict                               |          |         | ‘includeDirs’ can also be used as a shorthand |
 | type                 | static &vert; shared &vert; module |          | static  |                                               |
+
+---
 
 ### `variables`
 
@@ -211,5 +217,9 @@ variables:
     value: rocks
 ```
 
+---
+
 ### `install`
+
+---
 
