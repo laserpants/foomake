@@ -20,7 +20,7 @@ data ConfigureFile = ConfigureFile
 
 instance FromJSON ConfigureFile where
   parseJSON (Object v) =
-    ConfigureFile <$> v .: "input"
-                  <*> v .: "output"
-                  <*> v .: "arguments"
+    ConfigureFile <$> v .:  "input"
+                  <*> v .:  "output"
+                  <*> v .:? "arguments" .!= []
   parseJSON _ = fail "‘configure’ list entries must be objects"

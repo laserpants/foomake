@@ -225,6 +225,22 @@ main = do
         it "should fail to parse" $
           expectLeft (undefined :: Config) "name: test\nexecutables:\n  main:\n    includeDirs:\n      - one\n      - two\n    includeDirectories:\n      - one\n      - two"
 
+    describe "configure:" $ do
+
+      -- name: test
+      -- configure:
+      --   - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'
+      --     output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'
+
+      describe "name: test\nconfigure:\n  - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'\n    output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'" $ do
+
+        it "should be a list" $
+          expectThatRight "name: test\nconfigure:\n  - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'\n    output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'" $
+            \config -> configure config
+              `shouldBe` [ ConfigureFile "${PROJECT_SOURCE_DIR}/TutorialConfig.h.in" 
+                                         "${PROJECT_BINARY_DIR}/TutorialConfig.h" [] ]
+
+
 --    describe "libraries:" $ do
 --    describe "cmake:" $ do
 --    describe "variables:" $ do
