@@ -126,7 +126,8 @@ project(Your project
   VERSION 
     1.3 
   DESCRIPTION
-    One project to rule them all)
+    One project to rule them all
+  )
 ```
 
 ---
@@ -314,6 +315,9 @@ executables:
     includeDirectories:
       - '${PROJECT_BINARY_DIR}'     # add the binary tree to the search path for include files so 
                                     # that we will find TutorialConfig.h
-```
 
-What about `configure_file`?
+configure:
+  - file: 
+    - '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'
+    - '${PROJECT_BINARY_DIR}/TutorialConfig.h'
+```
