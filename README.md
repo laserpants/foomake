@@ -401,7 +401,7 @@ cmakeMinimumRequired:
   version: '2.6'
 
 options:
-  USE_MY_MATH:
+  - name: USE_MY_MATH:
     description: Use tutorial provided math implementation
     initialValue: ON
 
