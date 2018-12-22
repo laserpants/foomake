@@ -229,6 +229,17 @@ variables:
 
 ---
 
+### `options`
+
+```yaml
+options:
+  DISCO_PANTS:
+    description: Whether to clothe oneself in disco attire or not
+    initialValue: 'YES'
+```
+
+---
+
 ### `install`
 
 ---
@@ -401,7 +412,7 @@ cmakeMinimumRequired:
 options:
   USE_MYMATH:
     description: Use tutorial provided math implementation
-    initialValue: ON
+    initialValue: 'ON'
 
 executables:
   Tutorial:

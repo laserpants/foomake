@@ -7,7 +7,7 @@ cmakeMinimumRequired:
 options:
   USE_MYMATH:
     description: Use tutorial provided math implementation
-    initialValue: ON
+    initialValue: 'ON'
 
 executables:
   Tutorial:

@@ -11,6 +11,7 @@ import Data.Either (either, isLeft, isRight)
 import Data.Text
 import Test.Hspec
 
+import qualified Data.HashMap.Strict as HashMap
 import qualified Data.ByteString as ByteString
 import qualified Data.Yaml as Yaml
 
@@ -256,3 +257,39 @@ main = do
 --    describe "cmake:" $ do
 --    describe "variables:" $ do
 --    describe "install:" $ do
+
+    describe "options:" $ do
+
+      -- options:
+      --   DISCO_PANTS:
+      --     description: Whether to clothe oneself in disco attire or not
+      --     initialValue: 'YES'
+
+      describe "options:\n  DISCO_PANTS:\n    description: Whether to clothe oneself in disco attire or not\n    initialValue: 'YES'" $ do
+
+        it "should be a list" $
+          expectThatRight "options:\n  DISCO_PANTS:\n    description: Whether to clothe oneself in disco attire or not\n    initialValue: 'YES'" $
+            \config -> options config
+              `shouldBe` [ ("DISCO_PANTS", Option (Just "Whether to clothe oneself in disco attire or not") (Just "YES")) ]
+
+      -- options:
+      --   MEGA_PANTS:
+      --   FANCY_PANTS:
+
+      describe "options:\n  MEGA_PANTS:\n  FANCY_PANTS:" $ do
+
+        it "should be a list" $
+          expectThatRight "options:\n  MEGA_PANTS:\n  FANCY_PANTS:" $
+            \config -> HashMap.fromList (options config)
+              `shouldBe` HashMap.fromList [ ("MEGA_PANTS", Option Nothing Nothing), ("FANCY_PANTS", Option Nothing Nothing)]
+
+      -- options:
+      --   MEGA_PANTS: ~
+      --   FANCY_PANTS: ~
+
+      describe "options:\n  MEGA_PANTS: ~\n  FANCY_PANTS: ~" $ do
+
+        it "should be a list" $
+          expectThatRight "options:\n  MEGA_PANTS: ~\n  FANCY_PANTS: ~" $
+            \config -> HashMap.fromList (options config)
+              `shouldBe` HashMap.fromList [ ("MEGA_PANTS", Option Nothing Nothing), ("FANCY_PANTS", Option Nothing Nothing)]

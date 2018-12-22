@@ -46,4 +46,5 @@ tests:
     - foomake
     - hspec >= 2.5 && < 3
     - text >= 1.2 && < 2
+    - unordered-containers >= 0.2.9 && < 1
     - yaml >= 0.8 && < 1
