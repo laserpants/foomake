@@ -86,16 +86,54 @@ Or, for those who prefer JSON:
 }
 ```
 
-| Property             | Type                | Required |   |   |
-|----------------------|:-------------------:|----------|---|---|
-| name                 | string              |          |   |   |
-| version              | object&vert;string  |          |   |   |
-| description          | string              |          |   |   |
-| homepage             | string              |          |   |   |
-| languages            | array&vert;string   |          |   |   |
-| cmakeMinimumRequired | object&vert;string  |          |   |   |
-| executables          | object              |          |   |   |
-| libraries            | object              |          |   |   |
-| variables            | object              |          |   |   |
-| install              | object              |          |   |   |
+| Property             | Type                  | Required |   |
+|----------------------|-----------------------|:--------:|---|
+| name                 | string                |          |   |
+| version              | string                |          |   |
+| description          | string                |          |   |
+| homepage             | string                |          |   |
+| languages            | array &vert; string   |          |   |
+| cmakeMinimumRequired | object &vert; string  |          |   |
+| executables          | object                |          |   |
+| libraries            | object                |          |   |
+| variables            | object                |          |   |
+| install              | object                |          |   |
 
+### `name`
+
+### `version`
+
+### `description`
+
+### `homepage`
+
+### `languages`
+
+```yaml
+languages:
+  - CXX
+  - Fortran
+```
+
+```yaml
+languages: CXX
+```
+
+### `cmakeMinimumRequired`
+
+```yaml
+cmakeMinimumRequired:  
+  version: '3.2'
+```
+
+```yaml
+cmakeMinimumRequired: '3.2'
+```
+
+### `executables`
+
+### `libraries`
+
+### `variables`
+
+### `install`
