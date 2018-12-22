@@ -300,18 +300,18 @@ add_executable(Tutorial tutorial.cxx)
 
 ```yaml
 name: Tutorial
-version: '1.0'                  # the version number
+version: '1.0'                      # the version number
 
 cmakeMinimumRequired:
   version: '2.6'
 
 executables:
-  Tutorial:                     # add the executable
+  Tutorial:                         # add the executable
     files: 
       - tutorial.cxx
     includeDirectories:
-      - '${PROJECT_BINARY_DIR}' # add the binary tree to the search path for include files so 
-                                # that we will find TutorialConfig.h
+      - '${PROJECT_BINARY_DIR}'     # add the binary tree to the search path for include files so 
+                                    # that we will find TutorialConfig.h
 ```
 
 What about `configure_file`?
