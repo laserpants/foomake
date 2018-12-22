@@ -40,9 +40,9 @@ main = do
 
       describe "name: test" $ do
 
-        it "should set name to Just \"test\"" $
+        it "should set name to \"test\"" $
           expectThatRight "name: test\nversion: 0.1.3" $
-            \config -> name (project config) `shouldBe` Just "test"
+            \config -> name (project config) `shouldBe` "test"
 
       -- name: [1]
       -- version: 0.1.3
@@ -55,9 +55,7 @@ main = do
 
       describe "name: -" $ do
 
-        it "should set name to Nothing" $
-          expectThatRight "version: 0.1.3" $
-            \config -> name (project config) `shouldBe` Nothing
+        it "should fail to parse" (expectLeft (undefined :: Config) "version: 0.1.3")
 
       -- name: test
       -- languages:
@@ -105,19 +103,15 @@ main = do
 
       -- {}
 
-      describe "empty config" $ do
+      describe "empty ({}) config" $ do
 
-        it "should set name to Nothing" $
-          expectThatRight "{}" $
-            \config -> name (project config) `shouldBe` Nothing
+        it "should fail to parse" (expectLeft (undefined :: Config) "{}")
 
       -- ""
 
       describe "null config" $ do
 
-        it "should set name to Nothing" $
-          expectThatRight "" $
-            \config -> name (project config) `shouldBe` Nothing
+        it "should fail to parse" (expectLeft (undefined :: Config) "")
 
     describe "executables:" $ do
 

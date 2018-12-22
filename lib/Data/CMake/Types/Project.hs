@@ -11,7 +11,7 @@ import Data.Text
 import qualified Data.HashMap.Strict as HashMap
 
 data Project = Project
-  { name        :: !(Maybe Text)
+  { name        :: !Text
   , version     :: !(Maybe Text)
   , description :: !(Maybe Text)
   , homepage    :: !(Maybe Text)
@@ -29,7 +29,7 @@ instance FromJSON Languages where
 instance FromJSON Project where
   parseJSON (Object v) =
     let languages = v .:? "languages" .!= Languages []
-     in Project <$> v .:? "name"
+     in Project <$> v .:  "name"
                 <*> v .:? "version"
                 <*> v .:? "description"
                 <*> v .:? "homepage"
