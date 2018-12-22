@@ -315,7 +315,6 @@ executables:
     includeDirectories:
       - '${PROJECT_BINARY_DIR}'     # add the binary tree to the search path for include files so
                                     # that we will find TutorialConfig.h
-
 configure:
   - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'
     output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'
