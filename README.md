@@ -90,7 +90,7 @@ Or, for those who prefer JSON:
 
 | Property             | Type                  | Required |   |
 |----------------------|-----------------------|:--------:|---|
-| name                 | string                |          | `PROJECT_NAME` |
+| name                 | <code>string</code>                |          | `PROJECT_NAME` |
 | version              | string                |          | `PROJECT_VERSION` |
 | description          | string                |          |   |
 | homepage             | string                |          |   |
