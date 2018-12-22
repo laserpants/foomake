@@ -86,16 +86,16 @@ Or, for those who prefer JSON:
 }
 ```
 
-| Property             | Type           | Required |   |   |
-|----------------------|:--------------:|----------|---|---|
-| name                 | string         |          |   |   |
-| version              | object|string  |          |   |   |
-| description          | string         |          |   |   |
-| homepage             | string         |          |   |   |
-| languages            | array|string   |          |   |   |
-| cmakeMinimumRequired | object|string  |          |   |   |
-| executables          | object         |          |   |   |
-| libraries            | object         |          |   |   |
-| variables            | object         |          |   |   |
-| install              | object         |          |   |   |
+| Property             | Type                | Required |   |   |
+|----------------------|:-------------------:|----------|---|---|
+| name                 | string              |          |   |   |
+| version              | object&vert;string  |          |   |   |
+| description          | string              |          |   |   |
+| homepage             | string              |          |   |   |
+| languages            | array&vert;string   |          |   |   |
+| cmakeMinimumRequired | object&vert;string  |          |   |   |
+| executables          | object              |          |   |   |
+| libraries            | object              |          |   |   |
+| variables            | object              |          |   |   |
+| install              | object              |          |   |   |
 
