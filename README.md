@@ -105,7 +105,7 @@ Or, for those who prefer JSON:
 | variables              | dict                     |                                                |
 | install                | dict                     |                                                |
 
-<sup>&dagger;</sup> None of the top-level keys are required.
+<sup>&dagger;</sup> required
 
 ---
 
