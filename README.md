@@ -94,7 +94,7 @@ Or, for those who prefer JSON:
 |----------------------|--------------------------|-------------|
 | name                 | string                   | Sets the `PROJECT_NAME` variable    |
 | version              | string                   | Sets the `PROJECT_VERSION` variable |
-| description          | string                   | Sets the `CMAKE_PROJECT_DESCRIPTION` varaible |
+| description          | string                   | Sets the `CMAKE_PROJECT_DESCRIPTION` variable |
 | homepage             | string                   | Sets the `CMAKE_PROJECT_HOMEPAGE_URL` variable |
 | languages            | list (or string)         |             |
 | cmakeMinimumRequired | dict (or string)         |             |
