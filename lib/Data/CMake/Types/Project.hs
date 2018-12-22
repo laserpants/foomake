@@ -4,14 +4,16 @@ module Data.CMake.Types.Project
   ) where
 
 import Control.Applicative ((<|>))
+import Control.Monad (guard)
 import Data.Aeson
 import Data.Aeson.Types
+import Data.Maybe (isJust, isNothing)
 import Data.Text
 
 import qualified Data.HashMap.Strict as HashMap
 
 data Project = Project
-  { name        :: !Text
+  { name        :: !(Maybe Text)
   , version     :: !(Maybe Text)
   , description :: !(Maybe Text)
   , homepage    :: !(Maybe Text)
@@ -27,11 +29,13 @@ instance FromJSON Languages where
   parseJSON _ = fail "‘languages’ must be an array or a string"
 
 instance FromJSON Project where
-  parseJSON (Object v) =
-    let languages = v .:? "languages" .!= Languages []
-     in Project <$> v .:  "name"
-                <*> v .:? "version"
-                <*> v .:? "description"
-                <*> v .:? "homepage"
-                <*> fmap unLanguages languages
+  parseJSON (Object v) = do
+    Languages languages <- v .:? "languages" .!= Languages []
+    name                <- v .:? "name"
+    version             <- v .:? "version"
+    description         <- v .:? "description"
+    homepage            <- v .:? "homepage"
+    let allNothing = isNothing version && isNothing description && isNothing homepage
+    guard (allNothing || isJust name)
+    pure (Project name version description homepage languages)
   parseJSON _ = fail "application error"

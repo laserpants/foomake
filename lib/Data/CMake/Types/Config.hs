@@ -31,4 +31,5 @@ instance FromJSON Config where
            <*> v .:? "variables"   .!= Variables []
            <*> v .:? "install"     .!= Install
            <*> v .:? "configure"   .!= []
+  parseJSON Null = parseJSON (Object mempty)
   parseJSON _ = fail "configuration must be an object"

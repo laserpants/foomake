@@ -106,7 +106,7 @@ Or, for those who prefer JSON:
 | install                 | dict                     |                                                 |
 | configure               | list                     | Copy and perform variable substitution on files |
 
-&dagger;) **required**
+&dagger;) Required if any of `version`, `description`, `homepage`, or `languages` are set.
 
 ---
 
@@ -341,9 +341,12 @@ executables:
     files:
       - tutorial.cxx
     includeDirectories:
-      - '${PROJECT_BINARY_DIR}'     # add the binary tree to the search path for include files so
-                                    # that we will find TutorialConfig.h
+      - '${PROJECT_BINARY_DIR}'     # add the binary tree to the search path for include files
+                                    # so that we will find TutorialConfig.h
 configure:
   - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'
     output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'
 ```
+
+### Step 2
+

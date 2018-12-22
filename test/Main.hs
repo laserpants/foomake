@@ -40,9 +40,9 @@ main = do
 
       describe "name: test" $ do
 
-        it "should set name to \"test\"" $
+        it "should set name to Just \"test\"" $
           expectThatRight "name: test\nversion: 0.1.3" $
-            \config -> name (project config) `shouldBe` "test"
+            \config -> name (project config) `shouldBe` Just "test"
 
       -- name: [1]
       -- version: 0.1.3
@@ -51,7 +51,11 @@ main = do
 
         it "should fail to parse" (expectLeft (undefined :: Config) "name: [1]\nversion: 0.1.3")
 
-      -- version: 0.1.3
+      -- version: '0.1.3'
+
+      describe "{version: '0.1.3'}" $ do
+
+        it "should fail to parse (name must be present if other project properties are set)" (expectLeft (undefined :: Config) "{version: '0.1.3'}")
 
       -- name: test
       -- version: '1.3'
@@ -61,10 +65,6 @@ main = do
         it "should set version to Just 1.3" $
           expectThatRight "name: test\nversion: '1.3'" $
             \config -> version (project config) `shouldBe` Just "1.3"
-
-      describe "name: -" $ do
-
-        it "should fail to parse" (expectLeft (undefined :: Config) "version: 0.1.3")
 
       -- name: test
       -- languages:
@@ -114,13 +114,17 @@ main = do
 
       describe "empty ({}) config" $ do
 
-        it "should fail to parse" (expectLeft (undefined :: Config) "{}")
+        it "should set name to Nothing" $
+          expectThatRight "{}" $
+            \config -> name (project config) `shouldBe` Nothing
 
       -- ""
 
       describe "null config" $ do
 
-        it "should fail to parse" (expectLeft (undefined :: Config) "")
+        it "should set name to Nothing" $
+          expectThatRight "" $
+            \config -> name (project config) `shouldBe` Nothing
 
     describe "executables:" $ do
 
@@ -227,15 +231,14 @@ main = do
 
     describe "configure:" $ do
 
-      -- name: test
       -- configure:
       --   - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'
       --     output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'
 
-      describe "name: test\nconfigure:\n  - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'\n    output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'" $ do
+      describe "configure:\n  - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'\n    output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'" $ do
 
         it "should be a list" $
-          expectThatRight "name: test\nconfigure:\n  - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'\n    output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'" $
+          expectThatRight "configure:\n  - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'\n    output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'" $
             \config -> configure config
               `shouldBe` [ ConfigureFile "${PROJECT_SOURCE_DIR}/TutorialConfig.h.in" 
                                          "${PROJECT_BINARY_DIR}/TutorialConfig.h" [] ]
