@@ -152,10 +152,10 @@ executables:
 
 #### Executable dictionary properties
 
-| Key                  | Type                     | Required | Default | Description |
-|----------------------|--------------------------|:--------:|---------|-------------|
-| files                | list                     |          |         |             |
-| includeDirectories   | dict                     |          |         |             |
+| Key                  | Type                     | Required | Default | Description                                   |
+|----------------------|--------------------------|:--------:|---------|-----------------------------------------------|
+| files                | list                     |          |         |                                               |
+| includeDirectories   | dict                     |          |         | ‘includeDirs’ can also be used as a shorthand |
 
 ### `libraries`
 
@@ -169,11 +169,11 @@ libraries:
 
 #### Library dictionary properties
 
-| Key                  | Type                               | Required | Default | Description |
-|----------------------|------------------------------------|:--------:|---------|-------------|
-| files                | list                               |          |         |             |
-| includeDirectories   | dict                               |          |         |             |
-| type                 | static &vert; shared &vert; module |          | static  |             |
+| Key                  | Type                               | Required | Default | Description                                   |
+|----------------------|------------------------------------|:--------:|---------|-----------------------------------------------|
+| files                | list                               |          |         |                                               |
+| includeDirectories   | dict                               |          |         | ‘includeDirs’ can also be used as a shorthand |
+| type                 | static &vert; shared &vert; module |          | static  |                                               |
 
 ### `variables`
 
