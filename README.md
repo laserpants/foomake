@@ -1,6 +1,6 @@
 # foomake
 
-Wouldn't it be nice to have a more declarative way to express CMake build requirements? So that, instead of&hellip;
+Wouldn't it be nice to have a more grokkable way to express CMake build requirements? So that, instead of&hellip;
 
 ```cmake
 # CMakeLists.txt
