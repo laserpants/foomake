@@ -53,6 +53,15 @@ main = do
 
       -- version: 0.1.3
 
+      -- name: test
+      -- version: '1.3'
+
+      describe "version: '1.3'" $ do
+
+        it "should set version to Just 1.3" $
+          expectThatRight "name: test\nversion: '1.3'" $
+            \config -> version (project config) `shouldBe` Just "1.3"
+
       describe "name: -" $ do
 
         it "should fail to parse" (expectLeft (undefined :: Config) "version: 0.1.3")
