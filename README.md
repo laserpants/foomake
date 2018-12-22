@@ -92,18 +92,19 @@ Or, for those who prefer JSON:
 
 ## Top-level keys
 
-| Key                     | Type                     | Description                                    |
-|-------------------------|--------------------------|------------------------------------------------|
-| name<sup>&dagger;</sup> | string                   | Sets the `PROJECT_NAME` variable               |
-| version                 | string                   | Sets the `PROJECT_VERSION` variable            |
-| description             | string                   | Sets the `CMAKE_PROJECT_DESCRIPTION` variable  |
-| homepage                | string                   | Sets the `CMAKE_PROJECT_HOMEPAGE_URL` variable |
-| languages               | list (or string)         | Sets the project `LANGUAGES`                   |
-| cmakeMinimumRequired    | dict (or string)         | Set the minimum required version of CMake      |
-| executables             | dict                     | Executable targets (binaries)                  |
-| libraries               | dict                     | Library targets                                |
-| variables               | dict                     |                                                |
-| install                 | dict                     |                                                |
+| Key                     | Type                     | Description                                     |
+|-------------------------|--------------------------|-------------------------------------------------|
+| name<sup>&dagger;</sup> | string                   | Sets the `PROJECT_NAME` variable                |
+| version                 | string                   | Sets the `PROJECT_VERSION` variable             |
+| description             | string                   | Sets the `CMAKE_PROJECT_DESCRIPTION` variable   |
+| homepage                | string                   | Sets the `CMAKE_PROJECT_HOMEPAGE_URL` variable  |
+| languages               | list (or string)         | Sets the project `LANGUAGES`                    |
+| cmakeMinimumRequired    | dict (or string)         | Set the minimum required version of CMake       |
+| executables             | dict                     | Executable targets (binaries)                   |
+| libraries               | dict                     | Library targets                                 |
+| variables               | dict                     |                                                 |
+| install                 | dict                     |                                                 |
+| configure               | list                     | Copy and perform variable substitution on files |
 
 &dagger;) **required**
 
@@ -228,6 +229,10 @@ variables:
 ---
 
 ### `install`
+
+---
+
+### `configure`
 
 ---
 

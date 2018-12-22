@@ -6,6 +6,7 @@ module Data.CMake.Types.Config
 import Data.Aeson
 import Data.Aeson.Types
 import Data.CMake.Types.CMake
+import Data.CMake.Types.Configure
 import Data.CMake.Types.Install
 import Data.CMake.Types.Project
 import Data.CMake.Types.Targets
