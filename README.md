@@ -111,6 +111,24 @@ Or, for those who prefer JSON:
 
 ### `name`, `version`, `description`, `homepage`
 
+These properties set the project details. For example,
+
+```yaml
+name: Your project
+version: '1.3'
+description: One project to rule them all
+```
+
+translates to:
+
+```cmake
+project(Your project 
+  VERSION 
+    1.3 
+  DESCRIPTION
+    One project to rule them all)
+```
+
 ---
 
 ### `languages`
