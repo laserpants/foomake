@@ -86,6 +86,8 @@ Or, for those who prefer JSON:
 }
 ```
 
+## Property spec.
+
 | Property             | Type                  | Required |   |
 |----------------------|-----------------------|:--------:|---|
 | name                 | string                |          |   |
