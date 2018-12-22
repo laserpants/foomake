@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Data.CMake.Types.Configure
-  ( Configure(..) 
+module Data.CMake.Types.ConfigureFile
+  ( ConfigureFile(..) 
   ) where
 
 import Data.Aeson
@@ -12,15 +12,15 @@ data ConfigureArg = ConfigureArg
 instance FromJSON ConfigureArg where
   parseJSON _ = pure ConfigureArg
 
-data Configure = Configure
+data ConfigureFile = ConfigureFile
   { input     :: !Text
   , output    :: !Text
   , arguments :: ![ConfigureArg]
   } deriving (Eq, Show)
 
-instance FromJSON Configure where
+instance FromJSON ConfigureFile where
   parseJSON (Object v) =
-    Configure <$> v .: "input"
-              <*> v .: "output"
-              <*> v .: "arguments"
-  parseJSON _ = fail "‘configure’ must be an object"
+    ConfigureFile <$> v .: "input"
+                  <*> v .: "output"
+                  <*> v .: "arguments"
+  parseJSON _ = fail "‘configure’ list entries must be objects"

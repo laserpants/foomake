@@ -6,7 +6,7 @@ module Data.CMake.Types.Config
 import Data.Aeson
 import Data.Aeson.Types
 import Data.CMake.Types.CMake
-import Data.CMake.Types.Configure
+import Data.CMake.Types.ConfigureFile
 import Data.CMake.Types.Install
 import Data.CMake.Types.Project
 import Data.CMake.Types.Targets
@@ -20,6 +20,7 @@ data Config = Config
   , targets   :: !Targets
   , variables :: !Variables
   , install   :: !Install
+  , configure :: ![ConfigureFile]
   } deriving (Eq, Show)
 
 instance FromJSON Config where
@@ -27,7 +28,7 @@ instance FromJSON Config where
     Config <$> parseJSON (Object v)
            <*> parseJSON (Object v)
            <*> parseJSON (Object v)
-           <*> v .:? "variables" .!= Variables []
-           <*> v .:? "install"   .!= Install
-  parseJSON Null = parseJSON (Object mempty)
+           <*> v .:? "variables"   .!= Variables []
+           <*> v .:? "install"     .!= Install
+           <*> v .:? "configure"   .!= []
   parseJSON _ = fail "configuration must be an object"
