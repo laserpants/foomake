@@ -234,6 +234,27 @@ variables:
 
 ### `configure`
 
+A list of files to perform variable substitution on using `configure_file`.
+
+List entries should be dictionaries of the following form.
+
+| Key                  | Type                     | Required | Description                                    |
+|----------------------|--------------------------|:--------:|------------------------------------------------|
+| input                | string                   | yes      |                                                |
+| output               | string                   | yes      |                                                |
+| arguments            | dict                     |          |                                                |
+
+Example:
+
+```yaml
+name: example
+configure:
+  - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'
+    output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'
+    arguments:
+      @ONLY: true
+```
+
 ---
 
 ## Targets
