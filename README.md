@@ -394,6 +394,8 @@ add_library(MathFunctions mysqrt.cxx)
 ```yaml
 name: Tutorial
 version: '1.0'                      # the version number
+subdirectories:
+  - MathFunctions  # ???
 
 cmakeMinimumRequired:
   version: '2.6'
@@ -411,6 +413,13 @@ executables:
       - '${PROJECT_BINARY_DIR}'     # add the binary tree to the search path for include files
     linkLibraries:                  # so that we will find TutorialConfig.h
       - name: MathFunctions
+
+# if (USE_MYMATH)
+executables:
+  Tutorial:
+    includeDirectories:
+      - '${PROJECT_SOURCE_DIR}/MathFunctions'
+# endif ()
 
 configure:
   - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'
