@@ -207,6 +207,21 @@ main = do
         it "should fail to parse" $
           expectLeft (undefined :: Config) "name: test\nexecutables:\n  main:\n    includeDirs: 3"
 
+      -- name: test
+      -- executables:
+      --   main:
+      --     includeDirs:
+      --       - one
+      --       - two
+      --     includeDirectories:
+      --       - one
+      --       - two
+
+      describe "name: test\nexecutables:\n  main:\n    includeDirs:\n      - one\n      - two\n    includeDirectories:\n      - one\n      - two" $ do
+
+        it "should fail to parse" $
+          expectLeft (undefined :: Config) "name: test\nexecutables:\n  main:\n    includeDirs:\n      - one\n      - two\n    includeDirectories:\n      - one\n      - two"
+
 --    describe "libraries:" $ do
 --    describe "cmake:" $ do
 --    describe "variables:" $ do

@@ -28,7 +28,9 @@ version:               0.1.0
 description:           An example of a declarative CMakeLists configuration
 homepage:              http://github.com/laserpants/foomake#readme
 languages:             CXX
-cmakeMinimumRequired:  '3.2'
+
+cmakeMinimumRequired:
+  version: '3.2'
 
 executables:
   main:
@@ -126,7 +128,7 @@ languages: CXX
 ### `cmakeMinimumRequired`
 
 ```yaml
-cmakeMinimumRequired:  
+cmakeMinimumRequired:
   version: '3.2'
 ```
 
