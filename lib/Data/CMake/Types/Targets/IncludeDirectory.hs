@@ -2,8 +2,10 @@
 module Data.CMake.Types.Targets.IncludeDirectory where
 
 import Control.Applicative ((<|>))
+import Control.Monad (when)
 import Data.Aeson
 import Data.Aeson.Types
+import Data.Maybe (isJust)
 import Data.Text
 
 data Scope = Public | Private | Interface
@@ -35,4 +37,5 @@ includeDirectories :: Object -> Parser [IncludeDirectory]
 includeDirectories v = do
   orign <- v .:? "includeDirectories"
   alias <- v .:? "includeDirs"
+  when (isJust orign && isJust alias) (fail "‘includeDirectories’ and ‘includeDirs’ cannot be used at the same time")
   pure (orign <|> alias) .!= []
