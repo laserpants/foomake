@@ -187,12 +187,7 @@ executables:
     # ...
 ```
 
-#### Executable dictionary properties
-
-| Key                  | Type                     | Required | Default | Alias        | Description                                    |
-|----------------------|--------------------------|:--------:|---------|--------------|------------------------------------------------|
-| files                | list                     |          |         |              |                                                |
-| includeDirectories   | dict                     |          |         | includeDirs  |                                                |
+See [Targets](#Targets)
 
 ---
 
@@ -206,13 +201,7 @@ libraries:
     # ...
 ```
 
-#### Library dictionary properties
-
-| Key                  | Type                               | Required | Default | Alias        | Description                                   |
-|----------------------|------------------------------------|:--------:|---------|--------------|-----------------------------------------------|
-| files                | list                               |          |         |              |                                               |
-| includeDirectories   | dict                               |          |         | includeDirs  |                                               |
-| type                 | static &vert; shared &vert; module |          | static  |              |                                               |
+See [Targets](#Targets)
 
 ---
 
@@ -241,3 +230,41 @@ variables:
 
 ---
 
+## Targets
+
+### Executables
+
+| Key                  | Type                     | Required | Default | Alias        | Description                                    |
+|----------------------|--------------------------|:--------:|---------|--------------|------------------------------------------------|
+| files                | list                     |          |         |              |                                                |
+| includeDirectories   | dict                     |          |         | includeDirs  |                                                |
+
+---
+
+#### `files`
+
+---
+
+#### `includeDirectories`
+
+---
+
+### Libraries
+
+| Key                  | Type                               | Required | Default | Alias        | Description                                   |
+|----------------------|------------------------------------|:--------:|---------|--------------|-----------------------------------------------|
+| files                | list                               |          |         |              |                                               |
+| includeDirectories   | dict                               |          |         | includeDirs  |                                               |
+| type                 | static &vert; shared &vert; module |          | static  |              |                                               |
+
+---
+
+#### `files`
+
+---
+
+#### `includeDirectories`
+
+---
+
+#### `type`
