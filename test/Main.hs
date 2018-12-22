@@ -1,12 +1,13 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
 
+import Control.Monad.IO.Class
 import Data.ByteString (ByteString)
 import Data.CMake.Types
 import Data.CMake.Types.Targets
 import Data.CMake.Types.Targets.Executable
 import Data.CMake.Types.Targets.IncludeDirectory
-import Data.Either (either, isLeft)
+import Data.Either (either, isLeft, isRight)
 import Data.Text
 import Test.Hspec
 
@@ -32,6 +33,14 @@ main :: IO ()
 main = do
 
   hspec $ do
+
+    describe "examples/0000.yaml" $ do
+
+      it "should parse" $ do
+        file <- liftIO $ ByteString.readFile "test/examples/0000.yaml"
+        let result = Yaml.decodeEither' file :: Either Yaml.ParseException Config
+
+        isRight result `shouldBe` True
 
     describe "project:" $ do
 

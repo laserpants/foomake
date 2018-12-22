@@ -1,0 +1,32 @@
+name: Tutorial
+version: '1.0'
+
+cmakeMinimumRequired:
+  version: '2.6'
+
+options:
+  USE_MYMATH:
+    description: Use tutorial provided math implementation
+    initialValue: ON
+
+executables:
+  Tutorial:
+    files:
+      - tutorial.cxx
+    includeDirectories:
+      - path: '${PROJECT_BINARY_DIR}'
+      - path: '${PROJECT_SOURCE_DIR}/MathFunctions'
+        if: USE_MYMATH
+    linkLibraries:
+      - name: MathFunctions
+        if: USE_MYMATH
+
+libraries:
+  MathFunctions:
+    files:
+      - MathFunctions/mysqrt.cxx
+    if: USE_MYMATH
+
+configure:
+  - file: ['${PROJECT_SOURCE_DIR}/TutorialConfig.h.in',
+           '${PROJECT_BINARY_DIR}/TutorialConfig.h']
