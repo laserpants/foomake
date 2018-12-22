@@ -304,7 +304,9 @@ A lot! What about those cases where control flow and conditional statements are 
 
 ## Examples
 
-Adapted from https://cmake.org/cmake-tutorial/
+The following examples are adapted from https://cmake.org/cmake-tutorial/
+
+### Step 1
 
 ```cmake
 cmake_minimum_required (VERSION 2.6)
@@ -344,6 +346,4 @@ executables:
 configure:
   - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'
     output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'
-    arguments:
-      @ONLY: true
 ```
