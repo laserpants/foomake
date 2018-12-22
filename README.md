@@ -275,11 +275,12 @@ A lot! What about those cases where control flow and conditional statements are 
 
 ## Examples
 
-Taken from https://cmake.org/cmake-tutorial/
+Adapted from https://cmake.org/cmake-tutorial/
 
 ```cmake
 cmake_minimum_required (VERSION 2.6)
 project (Tutorial)
+
 # the version number
 set (Tutorial_VERSION_MAJOR 1)
 set (Tutorial_VERSION_MINOR 0)
