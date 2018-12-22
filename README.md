@@ -124,7 +124,7 @@ languages:
   - Fortran
 ```
 
-&hellip;translates to
+translates to:
 
 ```cmake
 project(example LANGUAGES CXX Fortran)
