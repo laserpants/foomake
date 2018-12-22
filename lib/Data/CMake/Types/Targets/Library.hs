@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Data.CMake.Types.Targets.Library where
 
-import Control.Applicative ((<|>))
 import Data.Aeson
 import Data.CMake.Types.Targets.IncludeDirectory
 import Data.Text
@@ -17,7 +16,7 @@ instance FromJSON LibraryType where
   parseJSON (String "module") = pure Module
   parseJSON (String "MODULE") = pure Module
   parseJSON (String _) = fail "unrecognized library type"
-  parseJSON _ = fail "'library.type' must be a string"
+  parseJSON _ = fail "‘library.type’ must be a string"
 
 data Library = Library
   { typeof      :: !LibraryType
@@ -27,5 +26,5 @@ data Library = Library
 instance FromJSON Library where
   parseJSON (Object v) =
     Library <$> v .:? "type" .!= Static
-            <*> (v .: "includeDirectories" <|> v .: "includeDirs" <|> pure [])
-  parseJSON _ = fail "'libraries' list elements must be objects"
+            <*> includeDirectories v
+  parseJSON _ = fail "‘libraries’ list entries must be objects"

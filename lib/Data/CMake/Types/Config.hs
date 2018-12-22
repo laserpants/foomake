@@ -8,6 +8,7 @@ import Data.CMake.Types.Install
 import Data.CMake.Types.Project
 import Data.CMake.Types.Targets
 import Data.CMake.Types.Variables
+import Data.Monoid (mempty)
 import Data.Text
 
 data Config = Config
@@ -25,4 +26,5 @@ instance FromJSON Config where
            <*> parseJSON (Object v)
            <*> v .:? "variables" .!= Variables []
            <*> v .:? "install"   .!= Install
+  parseJSON Null = parseJSON (Object mempty)
   parseJSON _ = fail "configuration must be an object"

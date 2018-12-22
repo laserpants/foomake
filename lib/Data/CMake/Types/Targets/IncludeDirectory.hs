@@ -1,8 +1,12 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Data.CMake.Types.Targets.IncludeDirectory where
 
+import Control.Applicative ((<|>))
 import Data.Aeson
+import Data.Aeson.Types
 import Data.Text
+
+--data Scope = Public | Private | ?
 
 data IncludeDirectory = IncludeDirectory
   { path  :: !Text
@@ -14,4 +18,10 @@ instance FromJSON IncludeDirectory where
   parseJSON (Object v) =
     IncludeDirectory <$> v .:  "path"
                      <*> v .:? "scope" .!= "public"
-  parseJSON _ = fail "'includeDirectories' list elements must be strings or objects"
+  parseJSON _ = fail "‘includeDirectories’ list entries must be strings or objects"
+
+includeDirectories :: Object -> Parser [IncludeDirectory]
+includeDirectories v = do
+  orign <- v .:? "includeDirectories"
+  alias <- v .:? "includeDirs"
+  pure (orign <|> alias) .!= []

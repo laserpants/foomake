@@ -29,4 +29,4 @@ parseVariables pairs = fmap Variables (sequence (fmap ppair pairs))
 
 instance FromJSON Variables where
   parseJSON (Object v) = parseVariables (HashMap.toList v)
-  parseJSON _ = fail "'variables' must be an object"
+  parseJSON _ = fail "‘variables’ must be an object"

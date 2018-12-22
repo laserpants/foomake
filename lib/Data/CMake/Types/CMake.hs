@@ -11,7 +11,7 @@ data MinimumRequired = MinimumRequired
 instance FromJSON MinimumRequired where
   parseJSON (Object v) = MinimumRequired <$> v .: "version"
   parseJSON (String s) = MinimumRequired <$> pure s
-  parseJSON _ = fail "'cmakeMinimumRequired' must be an object or a string"
+  parseJSON _ = fail "‘cmakeMinimumRequired’ must be an object or a string"
 
 data CMake = CMake
   { minimumRequired :: !(Maybe MinimumRequired)

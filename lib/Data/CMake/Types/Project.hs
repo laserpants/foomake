@@ -3,8 +3,12 @@ module Data.CMake.Types.Project
   ( Project(..)
   ) where
 
+import Control.Applicative ((<|>))
 import Data.Aeson
+import Data.Aeson.Types
 import Data.Text
+
+import qualified Data.HashMap.Strict as HashMap
 
 data Project = Project
   { name        :: !(Maybe Text)
@@ -18,9 +22,9 @@ newtype Languages = Languages { unLanguages :: [Text] }
   deriving (Eq, Show)
 
 instance FromJSON Languages where
-  parseJSON (Array v) = Languages <$> parseJSON (Array v)
+  parseJSON (Array v)  = Languages <$> parseJSON (Array v)
   parseJSON (String s) = pure (Languages [s])
-  parseJSON _ = fail "'languages' must be an array or a string"
+  parseJSON _ = fail "‘languages’ must be an array or a string"
 
 instance FromJSON Project where
   parseJSON (Object v) =
