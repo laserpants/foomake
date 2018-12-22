@@ -399,8 +399,8 @@ cmakeMinimumRequired:
 
 options:
   USE_MY_MATH:
-    description: Use tutorial provided math implementation 
-    default: ON
+    description: Use tutorial provided math implementation
+    initial: ON
 
 executables:
   Tutorial:                         # add the executable
