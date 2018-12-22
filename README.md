@@ -234,7 +234,7 @@ variables:
 
 ### `configure`
 
-A list of files to perform variable substitution on. See `[configure_file](https://cmake.org/cmake/help/latest/command/configure_file.html?highlight=configure_file)`
+A list of files to perform variable substitution on. See [`configure_file`](https://cmake.org/cmake/help/latest/command/configure_file.html?highlight=configure_file)
 
 List entries should be dictionaries of the following form.
 
