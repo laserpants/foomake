@@ -191,7 +191,7 @@ main = do
         it "should be a list" $
           expectThatRight "name: test\nexecutables:\n  main:\n    includeDirs:\n      - path: include/apples\n        scope: public\n      - path: include/oranges\n        scope: private" $
             \config -> Prelude.head (executables (targets config))
-              `shouldBe` ("main", Executable [ IncludeDirectory "include/apples"  Public 
+              `shouldBe` ("main", Executable [ IncludeDirectory "include/apples"  Public
                                              , IncludeDirectory "include/oranges" Private ])
 
       -- name: test
@@ -232,15 +232,14 @@ main = do
     describe "configure:" $ do
 
       -- configure:
-      --   - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'
-      --     output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'
+      --   - file: ['${PROJECT_SOURCE_DIR}/TutorialConfig.h.in', '${PROJECT_BINARY_DIR}/TutorialConfig.h']
 
-      describe "configure:\n  - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'\n    output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'" $ do
+      describe "configure:\n  - file: ['${PROJECT_SOURCE_DIR}/TutorialConfig.h.in', '${PROJECT_BINARY_DIR}/TutorialConfig.h']" $ do
 
         it "should be a list" $
-          expectThatRight "configure:\n  - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'\n    output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'" $
+          expectThatRight "configure:\n  - file: ['${PROJECT_SOURCE_DIR}/TutorialConfig.h.in', '${PROJECT_BINARY_DIR}/TutorialConfig.h']" $
             \config -> configure config
-              `shouldBe` [ ConfigureFile "${PROJECT_SOURCE_DIR}/TutorialConfig.h.in" 
+              `shouldBe` [ ConfigureFile "${PROJECT_SOURCE_DIR}/TutorialConfig.h.in"
                                          "${PROJECT_BINARY_DIR}/TutorialConfig.h" [] ]
 
 

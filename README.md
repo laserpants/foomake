@@ -241,16 +241,14 @@ List entries should be dictionaries of the following form.
 
 | Key                  | Type                     | Required | Description                                        |
 |----------------------|--------------------------|:--------:|----------------------------------------------------|
-| input                | string                   | yes      |                                                    |
-| output               | string                   | yes      |                                                    |
+| file                 | list                     | yes      |                                                    |
 | arguments            | dict                     |          | Arguments accepted by the `configure_file` command |
 
 Example:
 
 ```yaml
 configure:
-  - input:  'config.h.in'
-    output: 'config.h'
+  - file: ['config.h.in', 'config.h']
     arguments:
       @ONLY: true
 ```
@@ -298,10 +296,6 @@ configure:
 
 ---
 
-## What's missing?
-
-A lot! What about those cases where control flow and conditional statements are unavoidable?
-
 ## Examples
 
 The following examples are adapted from https://cmake.org/cmake-tutorial/
@@ -343,9 +337,11 @@ executables:
     includeDirectories:
       - '${PROJECT_BINARY_DIR}'     # add the binary tree to the search path for include files
                                     # so that we will find TutorialConfig.h
+
+# configure a header file to pass some of the CMake settings to the source code
 configure:
-  - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'
-    output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'
+  - file: ['${PROJECT_SOURCE_DIR}/TutorialConfig.h.in',
+           '${PROJECT_BINARY_DIR}/TutorialConfig.h']
 ```
 
 ### Step 2
@@ -393,35 +389,35 @@ add_library(MathFunctions mysqrt.cxx)
 
 ```yaml
 name: Tutorial
-version: '1.0'                      # the version number
-imports:
-  - MathFunctions  # add_subdirectory ???
+version: '1.0'
 
 cmakeMinimumRequired:
   version: '2.6'
 
 options:
-  - name: USE_MY_MATH
+  USE_MYMATH:
     description: Use tutorial provided math implementation
     initialValue: ON
 
 executables:
-  Tutorial:                         # add the executable
+  Tutorial:
     files:
       - tutorial.cxx
     includeDirectories:
-      - '${PROJECT_BINARY_DIR}'     # add the binary tree to the search path for include files
-    linkLibraries:                  # so that we will find TutorialConfig.h
+      - path: '${PROJECT_BINARY_DIR}'
+      - path: '${PROJECT_SOURCE_DIR}/MathFunctions'
+        if: USE_MYMATH
+    linkLibraries:
       - name: MathFunctions
+        if: USE_MYMATH
 
-# if (USE_MYMATH)
-executables:
-  Tutorial:
-    includeDirectories:
-      - '${PROJECT_SOURCE_DIR}/MathFunctions'
-# endif ()
+libraries:
+  MathFunctions:
+    files:
+      - MathFunctions/mysqrt.cxx
+    if: USE_MYMATH
 
 configure:
-  - input:  '${PROJECT_SOURCE_DIR}/TutorialConfig.h.in'
-    output: '${PROJECT_BINARY_DIR}/TutorialConfig.h'
+  - file: ['${PROJECT_SOURCE_DIR}/TutorialConfig.h.in',
+           '${PROJECT_BINARY_DIR}/TutorialConfig.h']
 ```
