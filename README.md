@@ -271,30 +271,47 @@ variables:
 
 ## What's missing?
 
-A lot. What about those cases where control flow and conditional statements are unavoidable?
+A lot! What about those cases where control flow and conditional statements are unavoidable?
 
 ## Examples
 
-(taken from https://cmake.org/cmake-tutorial/)
+Taken from https://cmake.org/cmake-tutorial/
 
 ```cmake
 cmake_minimum_required (VERSION 2.6)
 project (Tutorial)
-# The version number.
+# the version number
 set (Tutorial_VERSION_MAJOR 1)
 set (Tutorial_VERSION_MINOR 0)
  
-# configure a header file to pass some of the CMake settings
-# to the source code
+# configure a header file to pass some of the CMake settings to the source code
 configure_file (
   "${PROJECT_SOURCE_DIR}/TutorialConfig.h.in"
   "${PROJECT_BINARY_DIR}/TutorialConfig.h"
   )
  
-# add the binary tree to the search path for include files
-# so that we will find TutorialConfig.h
+# add the binary tree to the search path for include files so that we will 
+# find TutorialConfig.h
 include_directories("${PROJECT_BINARY_DIR}")
  
 # add the executable
 add_executable(Tutorial tutorial.cxx)
 ```
+
+```yaml
+name: Tutorial
+version: '1.0'                  # the version number
+
+cmakeMinimumRequired:
+  version: '2.6'
+
+executables:
+  Tutorial:                     # add the executable
+    files: 
+      - tutorial.cxx
+    includeDirectories:
+      - '${PROJECT_BINARY_DIR}' # add the binary tree to the search path for 
+                                # include files so that we will find TutorialConfig.h
+```
+
+What about `configure_file`?
