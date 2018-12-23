@@ -153,7 +153,7 @@ main = do
             \config -> Prelude.head (executables (targets config))
               `shouldBe` ("main", Executable [ IncludeDirectory "include/bananas" Public
                                              , IncludeDirectory "include/apples"  Public
-                                             , IncludeDirectory "include/oranges" Public ])
+                                             , IncludeDirectory "include/oranges" Public ] [])
 
       -- name: test
       -- executables:
@@ -170,7 +170,7 @@ main = do
             \config -> Prelude.head (executables (targets config))
               `shouldBe` ("main", Executable [ IncludeDirectory "include/bananas" Public
                                              , IncludeDirectory "include/apples"  Public
-                                             , IncludeDirectory "include/oranges" Public ])
+                                             , IncludeDirectory "include/oranges" Public ] [])
 
       -- name: test
       -- executables:
@@ -185,7 +185,7 @@ main = do
         it "should be a list" $
           expectThatRight "name: test\nexecutables:\n  main:\n    files:\n    - src/foo.cpp\n    - src/baz.cpp\n    - src/moo.cpp" $
             \config -> Prelude.head (executables (targets config))
-              `shouldBe` ("main", Executable [])
+              `shouldBe` ("main", Executable [] [])
 
       -- name: test
       -- executables:
@@ -202,7 +202,7 @@ main = do
           expectThatRight "name: test\nexecutables:\n  main:\n    includeDirs:\n      - path: include/apples\n        scope: public\n      - path: include/oranges\n        scope: private" $
             \config -> Prelude.head (executables (targets config))
               `shouldBe` ("main", Executable [ IncludeDirectory "include/apples"  Public
-                                             , IncludeDirectory "include/oranges" Private ])
+                                             , IncludeDirectory "include/oranges" Private ] [])
 
       -- name: test
       -- executables:

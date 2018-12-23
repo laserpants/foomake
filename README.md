@@ -278,6 +278,7 @@ configure:
 |----------------------|--------------------------|:--------:|---------|--------------|------------------------------------------------|
 | files                | list                     |          |         |              |                                                |
 | includeDirectories   | list                     |          |         | includeDirs  |                                                |
+| linkLibraries        | list                     |          |         | linkLibs     |                                                |
 
 ---
 
@@ -286,6 +287,10 @@ configure:
 ---
 
 ### `includeDirectories`
+
+---
+
+### `linkLibraries`
 
 ---
 
@@ -295,6 +300,7 @@ configure:
 |----------------------|------------------------------------|:--------:|---------|--------------|-----------------------------------------------|
 | files                | list                               |          |         |              |                                               |
 | includeDirectories   | list                               |          |         | includeDirs  |                                               |
+| linkLibraries        | list                     |          |         |         | linkLibs     |                                               |
 | type                 | static &vert; shared &vert; module |          | static  |              |                                               |
 
 ---
@@ -304,6 +310,10 @@ configure:
 ---
 
 ### `includeDirectories`
+
+---
+
+### `linkLibraries`
 
 ---
 
@@ -420,16 +430,15 @@ executables:
       - tutorial.cxx
     includeDirectories:
       - path: '${PROJECT_BINARY_DIR}'
-      - path: '${PROJECT_SOURCE_DIR}/MathFunctions'
-        if: USE_MYMATH
     linkLibraries:
-      - name: MathFunctions
-        if: USE_MYMATH
+      - MathFunctions
 
 libraries:
   MathFunctions:
     files:
       - MathFunctions/mysqrt.cxx
+    includeDirectories:
+      - path: '${PROJECT_SOURCE_DIR}/MathFunctions'
     if: USE_MYMATH
 
 configure:

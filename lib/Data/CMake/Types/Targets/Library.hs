@@ -5,6 +5,7 @@ module Data.CMake.Types.Targets.Library
 
 import Data.Aeson
 import Data.CMake.Types.Targets.IncludeDirectory
+import Data.CMake.Types.Targets.LinkLibrary
 import Data.Text
 
 data LibraryType = Static | Shared | Module
@@ -23,10 +24,12 @@ instance FromJSON LibraryType where
 data Library = Library
   { typeof      :: !LibraryType
   , includeDirs :: ![IncludeDirectory]
+  , linkLibs    :: ![LinkLibrary]
   } deriving (Eq, Show)
 
 instance FromJSON Library where
   parseJSON (Object v) =
     Library <$> v .:? "type" .!= Static
             <*> includeDirectories v
+            <*> linkLibraries v
   parseJSON _ = fail "‘libraries’ list entries must be objects"
