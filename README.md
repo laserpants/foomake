@@ -23,11 +23,13 @@ target_link_libraries(main grok)
 &hellip;we could write something like:
 
 ```yaml
-name:                  example
-version:               0.1.0
-description:           An example of a declarative CMakeLists configuration
-homepage:              http://github.com/laserpants/foomake#readme
-languages:             CXX
+name:                   example
+version:                0.1.0
+description:            An example of a declarative CMakeLists configuration
+homepage:               http://github.com/laserpants/foomake#readme
+languages:              CXX
+variables:
+  DEFAULT_BUILD_TYPE:   Release
 
 cmakeMinimumRequired:
   version: '3.2'
@@ -47,9 +49,6 @@ libraries:
     includeDirs:
       - path: '${CMAKE_CURRENT_SOURCE_DIR}/include'
         scope: public
-
-variables:
-  DEFAULT_BUILD_TYPE: Release
 ```
 
 <!--
