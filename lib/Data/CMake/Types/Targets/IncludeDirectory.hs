@@ -5,11 +5,9 @@ module Data.CMake.Types.Targets.IncludeDirectory
   , includeDirectories
   ) where
 
-import Control.Applicative ((<|>))
-import Control.Monad (guard)
 import Data.Aeson
 import Data.Aeson.Types
-import Data.Maybe (isNothing)
+import Data.CMake.Utils
 import Data.Text
 
 data Scope = Public | Private | Interface
@@ -38,8 +36,4 @@ instance FromJSON IncludeDirectory where
   parseJSON _ = fail "‘includeDirectories’ list entries must be strings or objects"
 
 includeDirectories :: Object -> Parser [IncludeDirectory]
-includeDirectories v = do
-  orign <- v .:? "includeDirectories"
-  alias <- v .:? "includeDirs"
-  guard (isNothing orign || isNothing alias)
-  pure (orign <|> alias) .!= []
+includeDirectories v = parseAlias v "includeDirectories" "includeDirs" .!= []

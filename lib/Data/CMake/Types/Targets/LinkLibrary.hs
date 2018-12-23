@@ -4,11 +4,9 @@ module Data.CMake.Types.Targets.LinkLibrary
   , linkLibraries
   ) where
 
-import Control.Applicative ((<|>))
-import Control.Monad (guard)
 import Data.Aeson
 import Data.Aeson.Types
-import Data.Maybe (isNothing)
+import Data.CMake.Utils
 import Data.Text
 
 data LinkLibrary = LinkLibrary
@@ -22,8 +20,4 @@ instance FromJSON LinkLibrary where
   parseJSON _ = fail "‘linkLibraries’ list entries must be strings or objects"
 
 linkLibraries :: Object -> Parser [LinkLibrary]
-linkLibraries v = do
-  orign <- v .:? "linkLibraries"
-  alias <- v .:? "linkLibs"
-  guard (isNothing orign || isNothing alias)
-  pure (orign <|> alias) .!= []
+linkLibraries v = parseAlias v "linkLibraries" "linkLibs" .!= []
