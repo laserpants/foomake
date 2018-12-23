@@ -410,7 +410,6 @@ target_link_libraries (Tutorial  ${EXTRA_LIBS})
 add_library(MathFunctions mysqrt.cxx)
 ```
 
-
 ```yaml
 name: Tutorial
 version: '1.0'
@@ -428,7 +427,7 @@ executables:
     files:
       - tutorial.cxx
     includeDirectories:
-      - path: '${PROJECT_BINARY_DIR}'
+      - '${PROJECT_BINARY_DIR}'
     linkLibraries:
       - MathFunctions
 
@@ -437,7 +436,7 @@ libraries:
     files:
       - MathFunctions/mysqrt.cxx
     includeDirectories:
-      - path: '${PROJECT_SOURCE_DIR}/MathFunctions'
+      - '${PROJECT_SOURCE_DIR}/MathFunctions'
     ? /if/
     : USE_MYMATH
 
