@@ -438,7 +438,7 @@ libraries:
       - MathFunctions/mysqrt.cxx
     includeDirectories:
       - path: '${PROJECT_SOURCE_DIR}/MathFunctions'
-    ? if
+    ? /if/
     : USE_MYMATH
 
 configure:
