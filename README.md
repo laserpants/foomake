@@ -438,7 +438,8 @@ libraries:
       - MathFunctions/mysqrt.cxx
     includeDirectories:
       - path: '${PROJECT_SOURCE_DIR}/MathFunctions'
-    if: USE_MYMATH
+    ? if
+    : USE_MYMATH
 
 configure:
   - file: ['${PROJECT_SOURCE_DIR}/TutorialConfig.h.in',
