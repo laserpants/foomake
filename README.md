@@ -47,8 +47,8 @@ libraries:
     files:
       - src/laserpants/grok.cpp
     includeDirs:
-      - path: '${CMAKE_CURRENT_SOURCE_DIR}/include'
-        scope: public
+      public:
+        - '${CMAKE_CURRENT_SOURCE_DIR}/include'
 ```
 
 <!--
@@ -273,35 +273,24 @@ configure:
 
 | Key                  | Type                               | Required | Default | Alias        | Description                                   |
 |----------------------|------------------------------------|:--------:|---------|--------------|-----------------------------------------------|
-| includeDirectories   | list                               |          |         | includeDirs  |                                               |
+| includeDirectories   | dict                               |          |         | includeDirs  |                                               |
 | linkLibraries        | list                               |          |         | linkLibs     |                                               |
 
 ### `includeDirectories`
 
 ```yaml
     includeDirectories:
-      - 'include'
-      - 'include/stuff'
+      public:
+        - 'include'
+        - 'include/stuff'
 ```
-
-#### Include scope
-
-```yaml
-    includeDirectories:
-      - path: 'include'
-        scope: 'public'
-      - path: 'include/stuff'
-        scope: 'private'
-```
-
-TODO
 
 ```yaml
     includeDirectories:
       public:
-        - 'include'
+        - path: 'include'
       private:
-        - 'include/stuff'
+        - path: 'include/stuff'
 ```
 
 ---
@@ -315,7 +304,7 @@ TODO
 | Key                  | Type                     | Required | Default | Alias        | Description                                    |
 |----------------------|--------------------------|:--------:|---------|--------------|------------------------------------------------|
 | files                | list                     |          |         |              |                                                |
-| includeDirectories   | list                     |          |         | includeDirs  |                                                |
+| includeDirectories   | dict                     |          |         | includeDirs  |                                                |
 | linkLibraries        | list                     |          |         | linkLibs     |                                                |
 
 ---
@@ -329,7 +318,7 @@ TODO
 | Key                  | Type                               | Required | Default | Alias        | Description                                   |
 |----------------------|------------------------------------|:--------:|---------|--------------|-----------------------------------------------|
 | files                | list                               |          |         |              |                                               |
-| includeDirectories   | list                               |          |         | includeDirs  |                                               |
+| includeDirectories   | dict                               |          |         | includeDirs  |                                               |
 | linkLibraries        | list                               |          |         | linkLibs     |                                               |
 | type                 | static &vert; shared &vert; module |          | static  |              |                                               |
 
@@ -382,7 +371,8 @@ executables:
     files:
       - tutorial.cxx
     includeDirectories:
-      - '${PROJECT_BINARY_DIR}'     # add the binary tree to the search path for include files
+      public:
+        - '${PROJECT_BINARY_DIR}'   # add the binary tree to the search path for include files
                                     # so that we will find TutorialConfig.h
 
 # configure a header file to pass some of the CMake settings to the source code
@@ -450,7 +440,8 @@ executables:
     files:
       - tutorial.cxx
     includeDirectories:
-      - '${PROJECT_BINARY_DIR}'
+      public:
+        - '${PROJECT_BINARY_DIR}'
     linkLibraries:
       - MathFunctions
 
@@ -459,7 +450,8 @@ libraries:
     files:
       - MathFunctions/mysqrt.cxx
     includeDirectories:
-      - '${PROJECT_SOURCE_DIR}/MathFunctions'
+      public:
+        - '${PROJECT_SOURCE_DIR}/MathFunctions'
     ? /if/
     : USE_MYMATH
 
