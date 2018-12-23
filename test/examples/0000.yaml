@@ -14,18 +14,16 @@ executables:
     files:
       - tutorial.cxx
     includeDirectories:
-      - path: '${PROJECT_BINARY_DIR}'
-      - path: '${PROJECT_SOURCE_DIR}/MathFunctions'
-        if: USE_MYMATH
+      public:
+        - '${PROJECT_BINARY_DIR}'
+        - '${PROJECT_SOURCE_DIR}/MathFunctions'
     linkLibraries:
-      - name: MathFunctions
-        if: USE_MYMATH
+      - MathFunctions
 
 libraries:
   MathFunctions:
     files:
       - MathFunctions/mysqrt.cxx
-    if: USE_MYMATH
 
 configure:
   - file: ['${PROJECT_SOURCE_DIR}/TutorialConfig.h.in',

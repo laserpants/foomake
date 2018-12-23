@@ -142,14 +142,15 @@ main = do
       -- executables:
       --   main:
       --     includeDirectories:
-      --     - include/bananas
-      --     - include/apples
-      --     - include/oranges
+      --       public:
+      --         - include/bananas
+      --         - include/apples
+      --         - include/oranges
 
-      describe "name: test\nexecutables:\n  main:\n    includeDirectories:\n    - include/bananas\n    - include/apples\n    - include/oranges" $ do
+      describe "name: test\nexecutables:\n  main:\n    includeDirectories:\n      public:\n        - include/bananas\n        - include/apples\n        - include/oranges" $ do
 
         it "should be a list" $
-          expectThatRight "name: test\nexecutables:\n  main:\n    includeDirectories:\n    - include/bananas\n    - include/apples\n    - include/oranges" $
+          expectThatRight "name: test\nexecutables:\n  main:\n    includeDirectories:\n      public:\n        - include/bananas\n        - include/apples\n        - include/oranges" $
             \config -> Prelude.head (executables (targets config))
               `shouldBe` ("main", Executable [ IncludeDirectory "include/bananas" Public
                                              , IncludeDirectory "include/apples"  Public
@@ -159,14 +160,15 @@ main = do
       -- executables:
       --   main:
       --     includeDirs:
-      --     - include/bananas
-      --     - include/apples
-      --     - include/oranges
+      --       public:
+      --         - include/bananas
+      --         - include/apples
+      --         - include/oranges
 
-      describe "name: test\nexecutables:\n  main:\n    includeDirs:\n    - include/bananas\n    - include/apples\n    - include/oranges" $ do
+      describe "name: test\nexecutables:\n  main:\n    includeDirs:\n      public:\n        - include/bananas\n        - include/apples\n        - include/oranges" $ do
 
         it "should be a list" $
-          expectThatRight "name: test\nexecutables:\n  main:\n    includeDirs:\n    - include/bananas\n    - include/apples\n    - include/oranges" $
+          expectThatRight "name: test\nexecutables:\n  main:\n    includeDirs:\n      public:\n        - include/bananas\n        - include/apples\n        - include/oranges" $
             \config -> Prelude.head (executables (targets config))
               `shouldBe` ("main", Executable [ IncludeDirectory "include/bananas" Public
                                              , IncludeDirectory "include/apples"  Public
@@ -191,15 +193,15 @@ main = do
       -- executables:
       --   main:
       --     includeDirs:
-      --       - path: include/apples
-      --         scope: public
-      --       - path: include/oranges
-      --         scope: private
+      --       public:
+      --         - path: include/apples
+      --       private:
+      --         - path: include/oranges
 
-      describe "name: test\nexecutables:\n  main:\n    includeDirs:\n      - path: include/apples\n        scope: public\n      - path: include/oranges\n        scope: private" $ do
+      describe "name: test\nexecutables:\n  main:\n    includeDirs:\n      public:\n        - path: include/apples\n      private:\n        - path: include/oranges" $ do
 
         it "should be a list" $
-          expectThatRight "name: test\nexecutables:\n  main:\n    includeDirs:\n      - path: include/apples\n        scope: public\n      - path: include/oranges\n        scope: private" $
+          expectThatRight "name: test\nexecutables:\n  main:\n    includeDirs:\n      public:\n        - path: include/apples\n      private:\n        - path: include/oranges" $
             \config -> Prelude.head (executables (targets config))
               `shouldBe` ("main", Executable [ IncludeDirectory "include/apples"  Public
                                              , IncludeDirectory "include/oranges" Private ] [])
@@ -228,16 +230,18 @@ main = do
       -- executables:
       --   main:
       --     includeDirs:
-      --       - one
-      --       - two
+      --       public:
+      --         - one
+      --         - two
       --     includeDirectories:
-      --       - one
-      --       - two
+      --       public:
+      --         - one
+      --         - two
 
-      describe "name: test\nexecutables:\n  main:\n    includeDirs:\n      - one\n      - two\n    includeDirectories:\n      - one\n      - two" $ do
+      describe "name: test\nexecutables:\n  main:\n    includeDirs:\n      public:\n        - one\n        - two\n    includeDirectories:\n      public:\n        - one\n        - two" $ do
 
         it "should fail to parse" $
-          expectLeft (undefined :: Config) "name: test\nexecutables:\n  main:\n    includeDirs:\n      - one\n      - two\n    includeDirectories:\n      - one\n      - two"
+          expectLeft (undefined :: Config) "name: test\nexecutables:\n  main:\n    includeDirs:\n      public:\n        - one\n        - two\n    includeDirectories:\n      public:\n        - one\n        - two"
 
     describe "configure:" $ do
 
