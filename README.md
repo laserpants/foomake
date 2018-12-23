@@ -274,7 +274,7 @@ configure:
 | Key                  | Type                               | Required | Default | Alias        | Description                                   |
 |----------------------|------------------------------------|:--------:|---------|--------------|-----------------------------------------------|
 | includeDirectories   | list                               |          |         | includeDirs  |                                               |
-| linkLibraries        | list                     |          |         |         | linkLibs     |                                               |
+| linkLibraries        | list                               |          |         | linkLibs     |                                               |
 
 ### `includeDirectories`
 
