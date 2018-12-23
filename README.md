@@ -271,6 +271,45 @@ configure:
 
 ## Targets
 
+| Key                  | Type                               | Required | Default | Alias        | Description                                   |
+|----------------------|------------------------------------|:--------:|---------|--------------|-----------------------------------------------|
+| includeDirectories   | list                               |          |         | includeDirs  |                                               |
+| linkLibraries        | list                     |          |         |         | linkLibs     |                                               |
+
+### `includeDirectories`
+
+```yaml
+    includeDirectories:
+      - 'include'
+      - 'include/stuff'
+```
+
+#### Include scope
+
+```yaml
+    includeDirectories:
+      - path: 'include'
+        scope: 'public'
+      - path: 'include/stuff'
+        scope: 'private'
+```
+
+TODO
+
+```yaml
+    includeDirectories:
+      public:
+        - 'include'
+      private:
+        - 'include/stuff'
+```
+
+---
+
+### `linkLibraries`
+
+---
+
 ### Executables
 
 | Key                  | Type                     | Required | Default | Alias        | Description                                    |
@@ -285,34 +324,18 @@ configure:
 
 ---
 
-### `includeDirectories`
-
----
-
-### `linkLibraries`
-
----
-
 ### Libraries
 
 | Key                  | Type                               | Required | Default | Alias        | Description                                   |
 |----------------------|------------------------------------|:--------:|---------|--------------|-----------------------------------------------|
 | files                | list                               |          |         |              |                                               |
 | includeDirectories   | list                               |          |         | includeDirs  |                                               |
-| linkLibraries        | list                     |          |         |         | linkLibs     |                                               |
+| linkLibraries        | list                               |          |         | linkLibs     |                                               |
 | type                 | static &vert; shared &vert; module |          | static  |              |                                               |
 
 ---
 
 ### `files`
-
----
-
-### `includeDirectories`
-
----
-
-### `linkLibraries`
 
 ---
 
