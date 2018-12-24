@@ -93,7 +93,7 @@ project(Your project
   )
 ```
 
-Surround `version` in single or double quoutes to avoid the value to be interpreted as a number.
+Surround the `version` string in single or double quoutes to avoid the value to be interpreted as a number.
 
 ---
 
@@ -415,13 +415,12 @@ executables:
 
 libraries:
   MathFunctions:
+    if: USE_MYMATH
     files:
       - MathFunctions/mysqrt.cxx
     include-directories:
       public:
         - '${PROJECT_SOURCE_DIR}/MathFunctions'
-    ? /if/
-    : USE_MYMATH
 
 configure:
   - file: ['${PROJECT_SOURCE_DIR}/TutorialConfig.h.in',

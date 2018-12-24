@@ -20,8 +20,8 @@ libraries:
     files:
       - src/laserpants/grok.cpp
     include-dirs:
-      - path: '${CMAKE_CURRENT_SOURCE_DIR}/include'
-        scope: public
+      public:
+        - '${CMAKE_CURRENT_SOURCE_DIR}/include'
 
 variables:
   default_build_type: Release
