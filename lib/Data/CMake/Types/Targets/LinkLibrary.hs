@@ -10,7 +10,7 @@ import Data.CMake.Utils
 import Data.Text
 
 data LinkLibrary = LinkLibrary
-  { libName :: !Text
+  { library :: !Text
   } deriving (Eq, Show)
 
 instance FromJSON LinkLibrary where
