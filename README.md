@@ -93,6 +93,8 @@ project(Your project
   )
 ```
 
+Surround `version` in single or double quoutes to avoid the value to be interpreted as a number.
+
 ---
 
 ### `languages`
@@ -233,8 +235,8 @@ configure:
 
 | Key                  | Type                               | Required | Default | Alias        | Description                                   |
 |----------------------|------------------------------------|:--------:|---------|--------------|-----------------------------------------------|
-| include-directories   | dict                               |          |         | include-dirs  |                                               |
-| link-libraries        | list                               |          |         | link-libs     |                                               |
+| include-directories  | dict or list                       |          |         | include-dirs  |                                               |
+| link-libraries       | list                               |          |         | link-libs     |                                               |
 
 ### `include-directories`
 
@@ -270,7 +272,7 @@ configure:
 | Key                  | Type                     | Required | Default | Alias        | Description                                    |
 |----------------------|--------------------------|:--------:|---------|--------------|------------------------------------------------|
 | files                | list                     |          |         |              |                                                |
-| include-directories  | dict                     |          |         | include-dirs |                                                |
+| include-directories  | dict or list             |          |         | include-dirs |                                                |
 | link-libraries       | list                     |          |         | link-libs    |                                                |
 
 ---
@@ -284,7 +286,7 @@ configure:
 | Key                  | Type                               | Required | Default | Alias        | Description                                   |
 |----------------------|------------------------------------|:--------:|---------|--------------|-----------------------------------------------|
 | files                | list                               |          |         |              |                                               |
-| include-directories  | dict                               |          |         | include-dirs |                                               |
+| include-directories  | dict or list                       |          |         | include-dirs |                                               |
 | link-libraries       | list                               |          |         | link-libs    |                                               |
 | type                 | static &vert; shared &vert; module |          | static  |              |                                               |
 
