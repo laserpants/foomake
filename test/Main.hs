@@ -43,6 +43,14 @@ main = do
 
         isRight result `shouldBe` True
 
+    describe "examples/0001.yaml" $ do
+
+      it "should parse" $ do
+        file <- liftIO $ ByteString.readFile "test/examples/0001.yaml"
+        let result = Yaml.decodeEither' file :: Either Yaml.ParseException Config
+
+        isRight result `shouldBe` True
+
     describe "project:" $ do
 
       -- name: test
