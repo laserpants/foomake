@@ -32,7 +32,7 @@ variables:
   DEFAULT_BUILD_TYPE:   Release
 
 cmakeMinimumRequired:
-  version: '3.2'
+  version:              '3.2'
 
 executables:
   main:
@@ -50,44 +50,6 @@ libraries:
       public:
         - '${CMAKE_CURRENT_SOURCE_DIR}/include'
 ```
-
-<!--
-Or, for those who prefer JSON:
-
-```json
-{
-    "name": "example",
-    "version": "0.1.0",
-    "description": "An example of a declarative CMakeLists configuration",
-    "homepage": "http://github.com/laserpants/foomake#readme",
-    "languages": ["CXX"],
-    "cmakeMinimumRequired": "3.2",
-    "executables": {
-        "main": {
-            "files": [
-                "src/main.cpp"
-            ],
-            "linkLibraries": [ "grok" ]
-        }
-    },
-    "libraries": {
-        "grok": {
-            "type": "static",
-            "files": [
-                "src/laserpants/grok.cpp"
-            ],
-            "includeDirs": [{
-                "path": "${CMAKE_CURRENT_SOURCE_DIR}/include",
-                "scope": "public"
-            }]
-        }
-    },
-    "variables": {
-        "DEFAULT_BUILD_TYPE": "Release"
-    }
-}
-```
--->
 
 ## Top-level keys
 
