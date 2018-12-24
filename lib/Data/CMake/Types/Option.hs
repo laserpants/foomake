@@ -14,6 +14,6 @@ data Option = Option
 instance FromJSON Option where
   parseJSON (Object v) =
     Option <$> v .:? "description"
-           <*> v .:? "initialValue"
+           <*> v .:? "initial-value"
   parseJSON Null = parseJSON (Object mempty)
   parseJSON _ = fail "‘options’ entries must be objects"

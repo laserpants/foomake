@@ -20,4 +20,4 @@ instance FromJSON LinkLibrary where
   parseJSON _ = fail "‘linkLibraries’ list entries must be strings or objects"
 
 linkLibraries :: Object -> Parser [LinkLibrary]
-linkLibraries v = parseAlias v "linkLibraries" "linkLibs" .!= []
+linkLibraries v = parseAlias v "link-libraries" "link-libs" .!= []

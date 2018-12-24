@@ -1,22 +1,22 @@
 name: Tutorial
 version: '1.0'
 
-cmakeMinimumRequired:
+cmake-minimum-required:
   version: '2.6'
 
 options:
   USE_MYMATH:
     description: Use tutorial provided math implementation
-    initialValue: 'ON'
+    initial-value: 'ON'
 
 executables:
   Tutorial:
     files:
       - tutorial.cxx
-    includeDirectories:
+    include-directories:
       - '${PROJECT_BINARY_DIR}'
       - '${PROJECT_SOURCE_DIR}/MathFunctions'
-    linkLibraries:
+    link-libraries:
       - MathFunctions
 
 libraries:

@@ -26,7 +26,7 @@ instance FromJSON IncludeDirectory where
   parseJSON (Object v) =
     IncludeDirectory <$> v .: "path"
                      <*> pure Unspecified
-  parseJSON _ = fail "‘includeDirectories’ list entries must be strings or objects"
+  parseJSON _ = fail "‘include-directories’ list entries must be strings or objects"
 
 data IncludeGroup = IncludeGroup ![IncludeDirectory]
                                  ![IncludeDirectory]
@@ -37,7 +37,7 @@ instance FromJSON IncludeGroup where
     IncludeGroup <$> v .:? "public"    .!= []
                  <*> v .:? "private"   .!= []
                  <*> v .:? "interface" .!= []
-  parseJSON _ = fail "‘includeDirectories’ must be an object"
+  parseJSON _ = fail ""
 
 setScope :: Scope -> [IncludeDirectory] -> [IncludeDirectory]
 setScope newScope = fmap (\dir -> dir{ scope = newScope })
@@ -51,7 +51,7 @@ extractDirs (Just group) = setScope Public public
     IncludeGroup public private interface = group
 
 prop :: FromJSON a => Object -> Parser (Maybe a)
-prop v = parseAlias v "includeDirectories" "includeDirs"
+prop v = parseAlias v "include-directories" "include-dirs"
 
 includeDirectories :: Object -> Parser [IncludeDirectory]
 includeDirectories v = dict <|> list where

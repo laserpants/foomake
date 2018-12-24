@@ -149,15 +149,15 @@ main = do
       -- name: test
       -- executables:
       --   main:
-      --     includeDirectories:
+      --     include-directories:
       --       - include/bananas
       --       - include/apples
       --       - include/oranges
 
-      describe "name: test\nexecutables:\n  main:\n    includeDirectories:\n      - include/bananas\n      - include/apples\n      - include/oranges" $ do
+      describe "name: test\nexecutables:\n  main:\n    include-directories:\n      - include/bananas\n      - include/apples\n      - include/oranges" $ do
 
         it "should be a list" $
-          expectThatRight "name: test\nexecutables:\n  main:\n    includeDirectories:\n      - include/bananas\n      - include/apples\n      - include/oranges" $
+          expectThatRight "name: test\nexecutables:\n  main:\n    include-directories:\n      - include/bananas\n      - include/apples\n      - include/oranges" $
             \config -> Prelude.head (executables (targets config))
               `shouldBe` ("main", Executable [ IncludeDirectory "include/bananas" Unspecified
                                              , IncludeDirectory "include/apples"  Unspecified
@@ -166,16 +166,16 @@ main = do
       -- name: test
       -- executables:
       --   main:
-      --     includeDirectories:
+      --     include-directories:
       --       public:
       --         - include/bananas
       --         - include/apples
       --         - include/oranges
 
-      describe "name: test\nexecutables:\n  main:\n    includeDirectories:\n      public:\n        - include/bananas\n        - include/apples\n        - include/oranges" $ do
+      describe "name: test\nexecutables:\n  main:\n    include-directories:\n      public:\n        - include/bananas\n        - include/apples\n        - include/oranges" $ do
 
         it "should be a list" $
-          expectThatRight "name: test\nexecutables:\n  main:\n    includeDirectories:\n      public:\n        - include/bananas\n        - include/apples\n        - include/oranges" $
+          expectThatRight "name: test\nexecutables:\n  main:\n    include-directories:\n      public:\n        - include/bananas\n        - include/apples\n        - include/oranges" $
             \config -> Prelude.head (executables (targets config))
               `shouldBe` ("main", Executable [ IncludeDirectory "include/bananas" Public
                                              , IncludeDirectory "include/apples"  Public
@@ -184,16 +184,16 @@ main = do
       -- name: test
       -- executables:
       --   main:
-      --     includeDirs:
+      --     include-dirs:
       --       public:
       --         - include/bananas
       --         - include/apples
       --         - include/oranges
 
-      describe "name: test\nexecutables:\n  main:\n    includeDirs:\n      public:\n        - include/bananas\n        - include/apples\n        - include/oranges" $ do
+      describe "name: test\nexecutables:\n  main:\n    include-dirs:\n      public:\n        - include/bananas\n        - include/apples\n        - include/oranges" $ do
 
         it "should be a list" $
-          expectThatRight "name: test\nexecutables:\n  main:\n    includeDirs:\n      public:\n        - include/bananas\n        - include/apples\n        - include/oranges" $
+          expectThatRight "name: test\nexecutables:\n  main:\n    include-dirs:\n      public:\n        - include/bananas\n        - include/apples\n        - include/oranges" $
             \config -> Prelude.head (executables (targets config))
               `shouldBe` ("main", Executable [ IncludeDirectory "include/bananas" Public
                                              , IncludeDirectory "include/apples"  Public
@@ -217,16 +217,16 @@ main = do
       -- name: test
       -- executables:
       --   main:
-      --     includeDirs:
+      --     include-dirs:
       --       public:
       --         - path: include/apples
       --       private:
       --         - path: include/oranges
 
-      describe "name: test\nexecutables:\n  main:\n    includeDirs:\n      public:\n        - path: include/apples\n      private:\n        - path: include/oranges" $ do
+      describe "name: test\nexecutables:\n  main:\n    include-dirs:\n      public:\n        - path: include/apples\n      private:\n        - path: include/oranges" $ do
 
         it "should be a list" $
-          expectThatRight "name: test\nexecutables:\n  main:\n    includeDirs:\n      public:\n        - path: include/apples\n      private:\n        - path: include/oranges" $
+          expectThatRight "name: test\nexecutables:\n  main:\n    include-dirs:\n      public:\n        - path: include/apples\n      private:\n        - path: include/oranges" $
             \config -> Prelude.head (executables (targets config))
               `shouldBe` ("main", Executable [ IncludeDirectory "include/apples"  Public
                                              , IncludeDirectory "include/oranges" Private ] [])
@@ -234,39 +234,39 @@ main = do
       -- name: test
       -- executables:
       --   main:
-      --     includeDirectories: 3
+      --     include-directories: 3
 
-      describe "name: test\nexecutables:\n  main:\n    includeDirectories: 3" $ do
+      describe "name: test\nexecutables:\n  main:\n    include-directories: 3" $ do
 
         it "should fail to parse" $
-          expectLeft (undefined :: Config) "name: test\nexecutables:\n  main:\n    includeDirectories: 3"
+          expectLeft (undefined :: Config) "name: test\nexecutables:\n  main:\n    include-directories: 3"
 
       -- name: test
       -- executables:
       --   main:
-      --     includeDirs: 3
+      --     include-dirs: 3
 
-      describe "name: test\nexecutables:\n  main:\n    includeDirs: 3" $ do
+      describe "name: test\nexecutables:\n  main:\n    include-dirs: 3" $ do
 
         it "should fail to parse" $
-          expectLeft (undefined :: Config) "name: test\nexecutables:\n  main:\n    includeDirs: 3"
+          expectLeft (undefined :: Config) "name: test\nexecutables:\n  main:\n    include-dirs: 3"
 
       -- name: test
       -- executables:
       --   main:
-      --     includeDirs:
+      --     include-dirs:
       --       public:
       --         - one
       --         - two
-      --     includeDirectories:
+      --     include-directories:
       --       public:
       --         - one
       --         - two
 
-      describe "name: test\nexecutables:\n  main:\n    includeDirs:\n      public:\n        - one\n        - two\n    includeDirectories:\n      public:\n        - one\n        - two" $ do
+      describe "name: test\nexecutables:\n  main:\n    include-dirs:\n      public:\n        - one\n        - two\n    include-directories:\n      public:\n        - one\n        - two" $ do
 
         it "should fail to parse" $
-          expectLeft (undefined :: Config) "name: test\nexecutables:\n  main:\n    includeDirs:\n      public:\n        - one\n        - two\n    includeDirectories:\n      public:\n        - one\n        - two"
+          expectLeft (undefined :: Config) "name: test\nexecutables:\n  main:\n    include-dirs:\n      public:\n        - one\n        - two\n    include-directories:\n      public:\n        - one\n        - two"
 
     describe "configure:" $ do
 
@@ -292,12 +292,12 @@ main = do
       -- options:
       --   DISCO_PANTS:
       --     description: Whether to clothe oneself in disco attire or not
-      --     initialValue: 'YES'
+      --     initial-value: 'YES'
 
-      describe "options:\n  DISCO_PANTS:\n    description: Whether to clothe oneself in disco attire or not\n    initialValue: 'YES'" $ do
+      describe "options:\n  DISCO_PANTS:\n    description: Whether to clothe oneself in disco attire or not\n    initial-value: 'YES'" $ do
 
         it "should be a list" $
-          expectThatRight "options:\n  DISCO_PANTS:\n    description: Whether to clothe oneself in disco attire or not\n    initialValue: 'YES'" $
+          expectThatRight "options:\n  DISCO_PANTS:\n    description: Whether to clothe oneself in disco attire or not\n    initial-value: 'YES'" $
             \config -> options config
               `shouldBe` [ ("DISCO_PANTS", Option (Just "Whether to clothe oneself in disco attire or not") (Just "YES")) ]
 

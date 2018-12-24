@@ -31,14 +31,14 @@ languages:              CXX
 variables:
   DEFAULT_BUILD_TYPE:   Release
 
-cmakeMinimumRequired:
+cmake-minimum-required:
   version:              '3.2'
 
 executables:
   main:
     files:
       - src/main.cpp
-    linkLibraries:
+    link-libraries:
       - grok
 
 libraries:
@@ -46,7 +46,7 @@ libraries:
     type: static
     files:
       - src/laserpants/grok.cpp
-    includeDirs:
+    include-dirs:
       public:
         - '${CMAKE_CURRENT_SOURCE_DIR}/include'
 ```
@@ -60,7 +60,7 @@ libraries:
 | description             | string                   | Set the `CMAKE_PROJECT_DESCRIPTION` variable   |
 | homepage                | string                   | Set the `CMAKE_PROJECT_HOMEPAGE_URL` variable  |
 | languages               | list (or string)         | Set the project `LANGUAGES`                    |
-| cmakeMinimumRequired    | dict (or string)         | Set the minimum required version of CMake       |
+| cmake-minimum-required    | dict (or string)         | Set the minimum required version of CMake       |
 | executables             | dict                     | Executable targets (binaries)                   |
 | libraries               | dict                     | Library targets                                 |
 | variables               | dict                     |                                                 |
@@ -120,23 +120,23 @@ languages: CXX
 
 ---
 
-### `cmakeMinimumRequired`
+### `cmake-minimum-required`
 
 ```yaml
-cmakeMinimumRequired:
+cmake-minimum-required:
   version: '3.2'
 ```
 
 The following form is also accepted:
 
 ```yaml
-cmakeMinimumRequired: '3.2'
+cmake-minimum-required: '3.2'
 ```
 
 Or to specify a range:
 
 ```yaml
-cmakeMinimumRequired: '3.1...3.13'
+cmake-minimum-required: '3.1...3.13'
 ```
 
 ---
@@ -196,7 +196,7 @@ variables:
 options:
   DISCO_PANTS:
     description: Whether to clothe oneself in disco attire or not
-    initialValue: 'YES'
+    initial-value: 'YES'
 ```
 
 ---
@@ -235,20 +235,20 @@ configure:
 
 | Key                  | Type                               | Required | Default | Alias        | Description                                   |
 |----------------------|------------------------------------|:--------:|---------|--------------|-----------------------------------------------|
-| includeDirectories   | dict                               |          |         | includeDirs  |                                               |
-| linkLibraries        | list                               |          |         | linkLibs     |                                               |
+| include-directories   | dict                               |          |         | include-dirs  |                                               |
+| link-libraries        | list                               |          |         | link-libs     |                                               |
 
-### `includeDirectories`
+### `include-directories`
 
 ```yaml
-    includeDirectories:
+    include-directories:
       public:
         - 'include'
         - 'include/stuff'
 ```
 
 ```yaml
-    includeDirectories:
+    include-directories:
       public:
         - path: 'include'
       private:
@@ -257,7 +257,7 @@ configure:
 
 ---
 
-### `linkLibraries`
+### `link-libraries`
 
 ---
 
@@ -266,8 +266,8 @@ configure:
 | Key                  | Type                     | Required | Default | Alias        | Description                                    |
 |----------------------|--------------------------|:--------:|---------|--------------|------------------------------------------------|
 | files                | list                     |          |         |              |                                                |
-| includeDirectories   | dict                     |          |         | includeDirs  |                                                |
-| linkLibraries        | list                     |          |         | linkLibs     |                                                |
+| include-directories  | dict                     |          |         | include-dirs |                                                |
+| link-libraries       | list                     |          |         | link-libs    |                                                |
 
 ---
 
@@ -280,8 +280,8 @@ configure:
 | Key                  | Type                               | Required | Default | Alias        | Description                                   |
 |----------------------|------------------------------------|:--------:|---------|--------------|-----------------------------------------------|
 | files                | list                               |          |         |              |                                               |
-| includeDirectories   | dict                               |          |         | includeDirs  |                                               |
-| linkLibraries        | list                               |          |         | linkLibs     |                                               |
+| include-directories  | dict                               |          |         | include-dirs |                                               |
+| link-libraries       | list                               |          |         | link-libs    |                                               |
 | type                 | static &vert; shared &vert; module |          | static  |              |                                               |
 
 ---
@@ -325,14 +325,14 @@ add_executable(Tutorial tutorial.cxx)
 name: Tutorial
 version: '1.0'                      # the version number
 
-cmakeMinimumRequired:
+cmake-minimum-required:
   version: '2.6'
 
 executables:
   Tutorial:                         # add the executable
     files:
       - tutorial.cxx
-    includeDirectories:
+    include-directories:
       public:
         - '${PROJECT_BINARY_DIR}'   # add the binary tree to the search path for include files
                                     # so that we will find TutorialConfig.h
@@ -389,29 +389,29 @@ add_library(MathFunctions mysqrt.cxx)
 name: Tutorial
 version: '1.0'
 
-cmakeMinimumRequired:
+cmake-minimum-required:
   version: '2.6'
 
 options:
   USE_MYMATH:
     description: Use tutorial provided math implementation
-    initialValue: 'ON'
+    initial-value: 'ON'
 
 executables:
   Tutorial:
     files:
       - tutorial.cxx
-    includeDirectories:
+    include-directories:
       public:
         - '${PROJECT_BINARY_DIR}'
-    linkLibraries:
+    link-libraries:
       - MathFunctions
 
 libraries:
   MathFunctions:
     files:
       - MathFunctions/mysqrt.cxx
-    includeDirectories:
+    include-directories:
       public:
         - '${PROJECT_SOURCE_DIR}/MathFunctions'
     ? /if/

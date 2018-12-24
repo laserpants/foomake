@@ -4,14 +4,14 @@ description:           An example of a declarative CMakeLists configuration form
 homepage:              http://github.com/laserpants/foomake#readme
 languages:             CXX
 
-cmakeMinimumRequired:  
+cmake-minimum-required:  
   version: '3.2'
 
 executables:
   main:
     files:
       - src/main.cpp
-    linkLibraries:
+    link-libraries:
       - grok
 
 libraries:
@@ -19,7 +19,7 @@ libraries:
     type: static
     files:
       - src/laserpants/grok.cpp
-    includeDirs:
+    include-dirs:
       - path: '${CMAKE_CURRENT_SOURCE_DIR}/include'
         scope: public
 
