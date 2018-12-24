@@ -142,6 +142,23 @@ main = do
       -- executables:
       --   main:
       --     includeDirectories:
+      --       - include/bananas
+      --       - include/apples
+      --       - include/oranges
+
+      describe "name: test\nexecutables:\n  main:\n    includeDirectories:\n      - include/bananas\n      - include/apples\n      - include/oranges" $ do
+
+        it "should be a list" $
+          expectThatRight "name: test\nexecutables:\n  main:\n    includeDirectories:\n      - include/bananas\n      - include/apples\n      - include/oranges" $
+            \config -> Prelude.head (executables (targets config))
+              `shouldBe` ("main", Executable [ IncludeDirectory "include/bananas" Unspecified
+                                             , IncludeDirectory "include/apples"  Unspecified
+                                             , IncludeDirectory "include/oranges" Unspecified ] [])
+
+      -- name: test
+      -- executables:
+      --   main:
+      --     includeDirectories:
       --       public:
       --         - include/bananas
       --         - include/apples

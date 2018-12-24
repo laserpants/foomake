@@ -5,7 +5,7 @@ module Data.CMake.Types.ConfigureFile
 
 import Control.Monad (guard)
 import Data.Aeson
-import Data.Text
+import Data.Text (Text)
 
 data ConfigureArg = ConfigureArg
   deriving (Eq, Show)
@@ -23,6 +23,6 @@ instance FromJSON ConfigureFile where
   parseJSON (Object v) = do
     file <- v .:  "file"
     args <- v .:? "arguments" .!= []
-    guard (Prelude.length file == 2)
+    guard (length file == 2)
     pure (ConfigureFile (file !! 0) (file !! 1) args)
   parseJSON _ = fail "‘configure’ list entries must be objects"
