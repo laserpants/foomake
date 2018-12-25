@@ -46,7 +46,7 @@ libraries:
     type: static
     files:
       - src/laserpants/grok.cpp
-    include-dirs:
+    include-directories:
       public:
         - '${CMAKE_CURRENT_SOURCE_DIR}/include'
 ```
@@ -181,8 +181,6 @@ variables:
 ```cmake
 set(MY_VARIABLE "rocks")
 ```
-
-#### Dictionary form
 
 ```yaml
 variables:
@@ -391,6 +389,7 @@ target_link_libraries (Tutorial  ${EXTRA_LIBS})
 add_library(MathFunctions mysqrt.cxx)
 ```
 
+
 ```yaml
 name: Tutorial
 version: '1.0'
@@ -410,12 +409,11 @@ executables:
     include-directories:
       public:
         - '${PROJECT_BINARY_DIR}'
-    link-libraries:
+    $if-USE_MYMATH-link-libraries:
       - MathFunctions
 
 libraries:
-  MathFunctions:
-    if: USE_MYMATH
+  $if-USE_MYMATH-MathFunctions:
     files:
       - MathFunctions/mysqrt.cxx
     include-directories:

@@ -1,0 +1,27 @@
+name:                  example
+version:               0.1.0
+description:           An example of a declarative CMakeLists configuration format
+homepage:              http://github.com/laserpants/foomake#readme
+languages:             CXX
+
+cmake-minimum-required:  
+  version: '3.2'
+
+executables:
+  main:
+    files:
+      - src/main.cpp
+    link-libraries:
+      - grok
+
+libraries:
+  grok:
+    type: static
+    files:
+      - src/laserpants/grok.cpp
+    $if-USE_MYMATH-include-dirs:
+      public:
+        - '${CMAKE_CURRENT_SOURCE_DIR}/include'
+
+variables:
+  default_build_type: Release

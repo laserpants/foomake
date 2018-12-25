@@ -4,6 +4,7 @@ module Data.CMake.Types.Targets.Library
   ) where
 
 import Data.Aeson
+import Data.CMake.Types.Targets.File
 import Data.CMake.Types.Targets.IncludeDirectory
 import Data.CMake.Types.Targets.LinkLibrary
 import Data.Text
@@ -25,6 +26,7 @@ data Library = Library
   { typeof      :: !LibraryType
   , includeDirs :: ![IncludeDirectory]
   , linkLibs    :: ![LinkLibrary]
+  , files       :: ![File]
   } deriving (Eq, Show)
 
 instance FromJSON Library where
@@ -32,4 +34,5 @@ instance FromJSON Library where
     Library <$> v .:? "type" .!= Static
             <*> includeDirectories v
             <*> linkLibraries v
+            <*> v .:? "files" .!= []
   parseJSON _ = fail "‘libraries’ list entries must be objects"

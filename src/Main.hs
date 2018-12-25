@@ -5,8 +5,8 @@ import Data.CMake.Types
 import qualified Data.ByteString as ByteString
 import qualified Data.Yaml as Yaml
 
-main :: IO ()
+main :: IO Config
 main = do
-  file <- ByteString.readFile "example.yaml"
+  file <- ByteString.readFile "example2.yaml"
   config <- Yaml.decodeThrow file
-  print (config :: Config)
+  pure (config :: Config)
