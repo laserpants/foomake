@@ -31,9 +31,6 @@ languages:              CXX
 variables:
   DEFAULT_BUILD_TYPE:   Release
 
-cmake-minimum-required:
-  version:              '3.2'
-
 executables:
   main:
     files:
@@ -93,7 +90,7 @@ project(Your project
   )
 ```
 
-Surround the `version` string in single or double quoutes to avoid the value to be interpreted as a number.
+Surround the `version` string in single or double quoutes to avoid the value being interpreted as a number.
 
 ---
 
@@ -147,10 +144,9 @@ cmake-minimum-required: '3.1...3.13'
 
 ```yaml
 executables:
-  foo:
-    # ...
-  baz:
-    # ...
+  <target-name>: <dictionary>
+  <target-name>: <dictionary>
+  ...
 ```
 
 See [Targets](#Targets)
@@ -161,10 +157,9 @@ See [Targets](#Targets)
 
 ```yaml
 libraries:
-  grok:
-    # ...
-  bot:
-    # ...
+  <target-name>: <dictionary>
+  <target-name>: <dictionary>
+  ...
 ```
 
 See [Targets](#Targets)
@@ -173,11 +168,21 @@ See [Targets](#Targets)
 
 ### `variables`
 
-A dictionary where each key corresponds to the name of a variable, and the values are either strings (the variable's value), or objects of the following form:
+A dictionary where each key corresponds to the name of a variable.
+
+```yaml
+variables:
+  <variable-name>: <value>
+  <variable-name>: <value>
+  ...
+```
+
+The values are either strings (the variable's value), or objects of the following form:
 
 | Key          | Type                               | Required | Description                                   |
 |--------------|------------------------------------|----------|-----------------------------------------------|
 | value        | string                             | yes      |                                               |
+| TODO         |                                    |          |                                               |
 
 ```yaml
 variables:
@@ -197,6 +202,18 @@ variables:
 ---
 
 ### `options`
+
+```yaml
+options:
+  <option-name>: <dictionary>
+  <option-name>: <dictionary>
+  ...
+```
+
+| Key            | Type                               | Required | Description                                   |
+|----------------|------------------------------------|----------|-----------------------------------------------|
+| description    | string                             |          |                                               |
+| initial-value  | string                             |          |                                               |
 
 ```yaml
 options:
@@ -237,9 +254,26 @@ configure:
 
 ## Targets
 
+Targets are specified under the `executables`, and `libraries` top-level keys respectively. 
+
+```yaml
+  executables:
+    <target-name>: <dictionary>
+    <target-name>: <dictionary>
+    ...
+
+  libraries:
+    <target-name>: <dictionary>
+    <target-name>: <dictionary>
+    ...
+```
+
+The following keys appear in mappings of both types.
+
 | Key                  | Type                               | Required | Default | Alias        | Description                                   |
 |----------------------|------------------------------------|:--------:|---------|--------------|-----------------------------------------------|
-| include-directories  | dict or list                       |          |         | include-dirs |                                               |
+| files                | list                               |          |         |              |                                               |
+| include-directories  | dict or list                       |          | []      | include-dirs |                                               |
 | link-libraries       | list                               |          |         | link-libs    |                                               |
 
 ### `include-directories`
@@ -271,17 +305,16 @@ configure:
 
 ---
 
+### `files`
+
+---
+
 ### Executables
 
 | Key                  | Type                     | Required | Default | Alias        | Description                                    |
 |----------------------|--------------------------|:--------:|---------|--------------|------------------------------------------------|
-| files                | list                     |          |         |              |                                                |
-| include-directories  | dict or list             |          |         | include-dirs |                                                |
+| include-directories  | dict or list             |          | []      | include-dirs |                                                |
 | link-libraries       | list                     |          |         | link-libs    |                                                |
-
----
-
-### `files`
 
 ---
 
@@ -289,20 +322,16 @@ configure:
 
 | Key                  | Type                               | Required | Default | Alias        | Description                                   |
 |----------------------|------------------------------------|:--------:|---------|--------------|-----------------------------------------------|
-| files                | list                               |          |         |              |                                               |
-| include-directories  | dict or list                       |          |         | include-dirs |                                               |
+| include-directories  | dict or list                       |          | []      | include-dirs |                                               |
 | link-libraries       | list                               |          |         | link-libs    |                                               |
 | type                 | static &vert; shared &vert; module |          | static  |              |                                               |
-
----
-
-### `files`
-
 ---
 
 ### `type`
 
 ---
+
+## Dependencies
 
 ## Examples
 
