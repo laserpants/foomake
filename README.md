@@ -55,12 +55,12 @@ libraries:
 
 | Key                     | Type                     | Description                                     |
 |-------------------------|--------------------------|-------------------------------------------------|
-| name<sup>&dagger;</sup> | string                   | Set the `PROJECT_NAME` variable                |
-| version                 | string                   | Set the `PROJECT_VERSION` variable             |
-| description             | string                   | Set the `CMAKE_PROJECT_DESCRIPTION` variable   |
-| homepage                | string                   | Set the `CMAKE_PROJECT_HOMEPAGE_URL` variable  |
-| languages               | list (or string)         | Set the project `LANGUAGES`                    |
-| cmake-minimum-required    | dict (or string)         | Set the minimum required version of CMake       |
+| name<sup>&dagger;</sup> | string                   | Set the `PROJECT_NAME` variable                 |
+| version                 | string                   | Set the `PROJECT_VERSION` variable              |
+| description             | string                   | Set the `CMAKE_PROJECT_DESCRIPTION` variable    |
+| homepage                | string                   | Set the `CMAKE_PROJECT_HOMEPAGE_URL` variable   |
+| languages               | list (or string)         | Set the project `LANGUAGES`                     |
+| cmake-minimum-required  | dict (or string)         | Set the minimum required version of CMake       |
 | executables             | dict                     | Executable targets (binaries)                   |
 | libraries               | dict                     | Library targets                                 |
 | variables               | dict                     |                                                 |
@@ -173,6 +173,12 @@ See [Targets](#Targets)
 
 ### `variables`
 
+A dictionary where each key corresponds to the name of a variable, and the values are either strings (the variable's value), or objects of the following form:
+
+| Key          | Type                               | Required | Description                                   |
+|--------------|------------------------------------|----------|-----------------------------------------------|
+| value        | string                             | yes      |                                               |
+
 ```yaml
 variables:
   MY_VARIABLE: rocks
@@ -233,8 +239,8 @@ configure:
 
 | Key                  | Type                               | Required | Default | Alias        | Description                                   |
 |----------------------|------------------------------------|:--------:|---------|--------------|-----------------------------------------------|
-| include-directories  | dict or list                       |          |         | include-dirs  |                                               |
-| link-libraries       | list                               |          |         | link-libs     |                                               |
+| include-directories  | dict or list                       |          |         | include-dirs |                                               |
+| link-libraries       | list                               |          |         | link-libs    |                                               |
 
 ### `include-directories`
 
