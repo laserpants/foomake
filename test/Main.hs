@@ -5,6 +5,7 @@ import Control.Monad.IO.Class
 import Data.ByteString (ByteString)
 import Data.CMake.Types
 import Data.CMake.Types.Targets
+import Data.CMake.Types.Targets.Scope
 import Data.CMake.Types.Targets.Executable
 import Data.CMake.Types.Targets.File
 import Data.CMake.Types.Targets.IncludeDirectory
@@ -162,7 +163,7 @@ main = do
             \config -> Prelude.head (executables (targets config))
               `shouldBe` ("main", Executable [ IncludeDirectory "include/bananas" Unspecified
                                              , IncludeDirectory "include/apples"  Unspecified
-                                             , IncludeDirectory "include/oranges" Unspecified ] [] [])
+                                             , IncludeDirectory "include/oranges" Unspecified ] [] [] [])
 
       -- name: test
       -- executables:
@@ -180,7 +181,7 @@ main = do
             \config -> Prelude.head (executables (targets config))
               `shouldBe` ("main", Executable [ IncludeDirectory "include/bananas" Public
                                              , IncludeDirectory "include/apples"  Public
-                                             , IncludeDirectory "include/oranges" Public ] [] [])
+                                             , IncludeDirectory "include/oranges" Public ] [] [] [])
 
       -- name: test
       -- executables:
@@ -198,7 +199,7 @@ main = do
             \config -> Prelude.head (executables (targets config))
               `shouldBe` ("main", Executable [ IncludeDirectory "include/bananas" Public
                                              , IncludeDirectory "include/apples"  Public
-                                             , IncludeDirectory "include/oranges" Public ] [] [])
+                                             , IncludeDirectory "include/oranges" Public ] [] [] [])
 
       -- name: test
       -- executables:
@@ -213,7 +214,7 @@ main = do
         it "should be a list" $
           expectThatRight "name: test\nexecutables:\n  main:\n    files:\n    - src/foo.cpp\n    - src/baz.cpp\n    - src/moo.cpp" $
             \config -> Prelude.head (executables (targets config))
-              `shouldBe` ("main", Executable [] [] [ File "src/foo.cpp", File "src/baz.cpp", File "src/moo.cpp" ])
+              `shouldBe` ("main", Executable [] [] [] [ File "src/foo.cpp", File "src/baz.cpp", File "src/moo.cpp" ])
 
       -- name: test
       -- executables:
@@ -230,7 +231,7 @@ main = do
           expectThatRight "name: test\nexecutables:\n  main:\n    include-dirs:\n      public:\n        - path: include/apples\n      private:\n        - path: include/oranges" $
             \config -> Prelude.head (executables (targets config))
               `shouldBe` ("main", Executable [ IncludeDirectory "include/apples"  Public
-                                             , IncludeDirectory "include/oranges" Private ] [] [])
+                                             , IncludeDirectory "include/oranges" Private ] [] [] [])
 
       -- name: test
       -- executables:

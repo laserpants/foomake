@@ -14,6 +14,7 @@ set(DEFAULT_BUILD_TYPE "Release")
 add_library(grok STATIC src/laserpants/grok.cpp)
 
 target_include_directories(grok PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
+target_compile_features(grok PUBLIC cxx_std_17)
 
 add_executable(main src/main.cpp)
 
@@ -46,6 +47,9 @@ libraries:
     include-directories:
       public:
         - '${CMAKE_CURRENT_SOURCE_DIR}/include'
+    compile-features:
+      public:
+        - cxx_std_17
 ```
 
 ## Top-level keys
@@ -275,6 +279,7 @@ The following keys appear in mappings of both types.
 | files                | list                               |          |         |              |                                               |
 | include-directories  | dict or list                       |          | []      | include-dirs |                                               |
 | link-libraries       | list                               |          |         | link-libs    |                                               |
+| compile-features     | dict                               |          |         |              |                                               |
 
 ### `include-directories`
 
@@ -313,8 +318,6 @@ The following keys appear in mappings of both types.
 
 | Key                  | Type                     | Required | Default | Alias        | Description                                    |
 |----------------------|--------------------------|:--------:|---------|--------------|------------------------------------------------|
-| include-directories  | dict or list             |          | []      | include-dirs |                                                |
-| link-libraries       | list                     |          |         | link-libs    |                                                |
 
 ---
 
@@ -322,8 +325,6 @@ The following keys appear in mappings of both types.
 
 | Key                  | Type                               | Required | Default | Alias        | Description                                   |
 |----------------------|------------------------------------|:--------:|---------|--------------|-----------------------------------------------|
-| include-directories  | dict or list                       |          | []      | include-dirs |                                               |
-| link-libraries       | list                               |          |         | link-libs    |                                               |
 | type                 | static &vert; shared &vert; module |          | static  |              |                                               |
 ---
 
