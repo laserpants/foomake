@@ -27,11 +27,11 @@ instance FromJSON LibraryType where
   parseJSON _ = fail "‘library.type’ must be a string"
 
 data Library = Library
-  { typeof         :: !LibraryType
-  , includeDirs    :: ![IncludeDirectory]
-  , linkLibs       :: ![LinkLibrary]
-  , compileFeature :: ![CompileFeature]
-  , files          :: ![File]
+  { typeof          :: !LibraryType
+  , includeDirs     :: ![IncludeDirectory]
+  , linkLibs        :: ![LinkLibrary]
+  , compileFeatures :: ![CompileFeature]
+  , files           :: ![File]
   } deriving (Eq, Show)
 
 instance FromJSON Library where

@@ -11,10 +11,10 @@ import Data.CMake.Types.Targets.LinkLibrary
 import Data.Text
 
 data Executable = Executable
-  { includeDirs    :: ![IncludeDirectory]
-  , linkLibs       :: ![LinkLibrary]
-  , compileFeature :: ![CompileFeature]
-  , files          :: ![File]
+  { includeDirs     :: ![IncludeDirectory]
+  , linkLibs        :: ![LinkLibrary]
+  , compileFeatures :: ![CompileFeature]
+  , files           :: ![File]
   } deriving (Eq, Show)
 
 instance FromJSON Executable where
