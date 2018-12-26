@@ -68,6 +68,7 @@ libraries:
 | options                 | dict                     |                                                 |
 | install                 | dict                     |                                                 |
 | configure               | list                     | Copy and perform variable substitution on files |
+| dependencies            | list                     |                                                 |
 
 &dagger;) Required if any of `version`, `description`, `homepage`, or `languages` are set.
 
@@ -445,11 +446,11 @@ executables:
     include-directories:
       public:
         - '${PROJECT_BINARY_DIR}'
-    $if-USE_MYMATH-link-libraries:
+    .if-USE_MYMATH-link-libraries:
       - MathFunctions
 
 libraries:
-  $if-USE_MYMATH-MathFunctions:
+  .if-USE_MYMATH-MathFunctions:
     files:
       - MathFunctions/mysqrt.cxx
     include-directories:

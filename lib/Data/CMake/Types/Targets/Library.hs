@@ -27,9 +27,9 @@ instance FromJSON LibraryType where
   parseJSON _ = fail "‘library.type’ must be a string"
 
 data Library = Library
-  { typeof          :: !LibraryType
+  { libraryType     :: !LibraryType
   , includeDirs     :: ![IncludeDirectory]
-  , linkLibs        :: ![LinkLibrary]
+  , linkLibraries   :: ![LinkLibrary]
   , compileFeatures :: ![CompileFeature]
   , files           :: ![File]
   } deriving (Eq, Show)
@@ -37,8 +37,8 @@ data Library = Library
 instance FromJSON Library where
   parseJSON (Object v) =
     Library <$> v .:? "type" .!= Static
-            <*> includeDirectories v
-            <*> linkLibraries v
-            <*> compileFeatures v
+            <*> parseIncludeDirectories v
+            <*> parseLinkLibraries v
+            <*> parseCompileFeatures v
             <*> v .:? "files" .!= []
   parseJSON _ = fail "‘libraries’ list entries must be objects"

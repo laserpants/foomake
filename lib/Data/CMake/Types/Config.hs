@@ -6,6 +6,7 @@ module Data.CMake.Types.Config
 import Data.Aeson
 import Data.CMake.Types.CMake
 import Data.CMake.Types.ConfigureFile
+import Data.CMake.Types.FindPackage
 import Data.CMake.Types.Install
 import Data.CMake.Types.Option
 import Data.CMake.Types.Project
@@ -16,13 +17,14 @@ import Data.Monoid (mempty)
 import Data.Text
 
 data Config = Config
-  { project   :: !Project
-  , cmake     :: !CMake
-  , targets   :: !Targets
-  , variables :: ![(Text, Variable)]
-  , options   :: ![(Text, Option)]
-  , configure :: ![ConfigureFile]
-  , install   :: !Install
+  { project      :: !Project
+  , cmake        :: !CMake
+  , targets      :: !Targets
+  , variables    :: ![(Text, Variable)]
+  , options      :: ![(Text, Option)]
+  , configure    :: ![ConfigureFile]
+  , install      :: !Install
+  , findPackages :: ![FindPackage]
   } deriving (Eq, Show)
 
 instance FromJSON Config where
@@ -34,7 +36,8 @@ instance FromJSON Config where
            <*> parseJSON (Object v)
            <*> parseKvPairs variables
            <*> parseKvPairs options
-           <*> v .:? "configure" .!= []
-           <*> v .:? "install"   .!= Install
+           <*> v .:? "configure"    .!= []
+           <*> v .:? "install"      .!= Install
+           <*> v .:? "dependencies" .!= []
   parseJSON Null = parseJSON (Object mempty)
   parseJSON _ = fail "configuration must be an object"

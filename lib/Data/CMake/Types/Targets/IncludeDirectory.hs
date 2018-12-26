@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Data.CMake.Types.Targets.IncludeDirectory
   ( IncludeDirectory(..)
-  , includeDirectories
+  , parseIncludeDirectories
   ) where
 
 import Control.Applicative ((<|>))
@@ -31,7 +31,7 @@ instance HasScope IncludeDirectory where
 prop :: FromJSON a => Object -> Parser (Maybe a)
 prop v = parseAlias v "include-directories" "include-dirs"
 
-includeDirectories :: Object -> Parser [IncludeDirectory]
-includeDirectories v = dict v <|> list v where
+parseIncludeDirectories :: Object -> Parser [IncludeDirectory]
+parseIncludeDirectories v = dict v <|> list v where
     dict = liftM ungroup . prop
     list = liftM (join . maybeToList) . prop

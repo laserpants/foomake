@@ -12,15 +12,15 @@ import Data.Text
 
 data Executable = Executable
   { includeDirs     :: ![IncludeDirectory]
-  , linkLibs        :: ![LinkLibrary]
+  , linkLibraries   :: ![LinkLibrary]
   , compileFeatures :: ![CompileFeature]
   , files           :: ![File]
   } deriving (Eq, Show)
 
 instance FromJSON Executable where
   parseJSON (Object v) =
-    Executable <$> includeDirectories v
-               <*> linkLibraries v
-               <*> compileFeatures v
+    Executable <$> parseIncludeDirectories v
+               <*> parseLinkLibraries v
+               <*> parseCompileFeatures v
                <*> v .:? "files" .!= []
   parseJSON _ = fail "‘executables’ list entries must be objects"

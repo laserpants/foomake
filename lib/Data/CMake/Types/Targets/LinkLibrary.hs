@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Data.CMake.Types.Targets.LinkLibrary
   ( LinkLibrary(..)
-  , linkLibraries
+  , parseLinkLibraries
   ) where
 
 import Data.Aeson
@@ -19,5 +19,5 @@ instance FromJSON LinkLibrary where
     LinkLibrary <$> v .: "name"
   parseJSON _ = fail "‘linkLibraries’ list entries must be strings or objects"
 
-linkLibraries :: Object -> Parser [LinkLibrary]
-linkLibraries v = parseAlias v "link-libraries" "link-libs" .!= []
+parseLinkLibraries :: Object -> Parser [LinkLibrary]
+parseLinkLibraries v = parseAlias v "link-libraries" "link-libs" .!= []

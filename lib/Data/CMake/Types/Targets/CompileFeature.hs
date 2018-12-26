@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Data.CMake.Types.Targets.CompileFeature 
   ( CompileFeature(..)
-  , compileFeatures
+  , parseCompileFeatures
   ) where
 
 import Control.Applicative ((<|>))
@@ -27,7 +27,7 @@ instance FromJSON CompileFeature where
 instance HasScope CompileFeature where
   setScope scope feature = feature{ featureScope = scope }
 
-compileFeatures :: Object -> Parser [CompileFeature]
-compileFeatures v = dict <|> list where
+parseCompileFeatures :: Object -> Parser [CompileFeature]
+parseCompileFeatures v = dict <|> list where
     dict = liftM ungroup (v .:? "compile-features")
     list = liftM (join . maybeToList) (v .:? "compile-features")

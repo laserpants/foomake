@@ -4,8 +4,9 @@ description:           An example of a declarative CMakeLists configuration form
 homepage:              http://github.com/laserpants/foomake#readme
 languages:             CXX
 
-cmake-minimum-required:  
-  version: '3.2'
+dependencies:
+  - Threads
+  - Boost
 
 executables:
   main:
@@ -13,6 +14,7 @@ executables:
       - src/main.cpp
     link-libraries:
       - grok
+      - '${Boost_LIBRARIES}'
 
 libraries:
   grok:
