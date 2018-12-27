@@ -116,7 +116,7 @@ translates to:
 project(example LANGUAGES CXX Fortran)
 ```
 
-A string can be used as a shorthand for singleton lists:
+A string can also be used: 
 
 ```yaml
 languages: CXX
