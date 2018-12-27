@@ -8,7 +8,7 @@ import Control.Monad (guard)
 import Data.Aeson
 import Data.Aeson.Types
 import Data.Maybe (isJust, isNothing)
-import Data.Text
+import Data.Text (Text)
 
 import qualified Data.HashMap.Strict as HashMap
 
