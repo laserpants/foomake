@@ -35,7 +35,8 @@ instance FromJSON Project where
     version             <- v .:? "version"
     description         <- v .:? "description"
     homepage            <- v .:? "homepage"
-    let allNothing = isNothing version && isNothing description && isNothing homepage
+    let allNothing = null languages && isNothing version && isNothing description && isNothing homepage
+    -- name must be set if any other project property is given
     guard (allNothing || isJust name)
     pure (Project name version description homepage languages)
   parseJSON _ = fail "application error"
