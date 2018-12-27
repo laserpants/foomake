@@ -40,5 +40,5 @@ instance FromJSON Library where
             <*> parseIncludeDirectories v
             <*> parseLinkLibraries v
             <*> parseCompileFeatures v
-            <*> v .:? "files" .!= []
+            <*> v .:? "source-files" .!= []
   parseJSON _ = fail "‘libraries’ list entries must be objects"

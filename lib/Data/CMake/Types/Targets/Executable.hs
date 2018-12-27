@@ -22,5 +22,5 @@ instance FromJSON Executable where
     Executable <$> parseIncludeDirectories v
                <*> parseLinkLibraries v
                <*> parseCompileFeatures v
-               <*> v .:? "files" .!= []
+               <*> v .:? "source-files" .!= []
   parseJSON _ = fail "‘executables’ list entries must be objects"

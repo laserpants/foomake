@@ -34,7 +34,7 @@ variables:
 
 executables:
   main:
-    files:
+    source-files:
       - src/main.cpp
     link-libraries:
       - grok
@@ -42,7 +42,7 @@ executables:
 libraries:
   grok:
     type: static
-    files:
+    source-files:
       - src/laserpants/grok.cpp
     include-directories:
       public:
@@ -277,7 +277,7 @@ The following keys appear in mappings of both types.
 
 | Key                  | Type                               | Required | Default | Alias        | Description                                   |
 |----------------------|------------------------------------|:--------:|---------|--------------|-----------------------------------------------|
-| files                | list                               |          |         |              |                                               |
+| source-files         | list                               |          |         |              |                                               |
 | include-directories  | dict or list                       |          | []      | include-dirs |                                               |
 | link-libraries       | list                               |          |         | link-libs    |                                               |
 | compile-features     | dict                               |          |         |              |                                               |
@@ -311,7 +311,7 @@ The following keys appear in mappings of both types.
 
 ---
 
-### `files`
+### `source-files`
 
 ---
 
@@ -391,7 +391,7 @@ cmake-minimum-required:
 
 executables:
   Tutorial:                         # add the executable
-    files:
+    source-files:
       - tutorial.cxx
     include-directories:
       public:
@@ -461,7 +461,7 @@ options:
 
 executables:
   Tutorial:
-    files:
+    source-files:
       - tutorial.cxx
     include-directories:
       public:
@@ -471,7 +471,7 @@ executables:
 
 libraries:
   .if-USE_MYMATH-MathFunctions:
-    files:
+    source-files:
       - MathFunctions/mysqrt.cxx
     include-directories:
       public:

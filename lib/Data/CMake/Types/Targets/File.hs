@@ -14,4 +14,4 @@ instance FromJSON File where
   parseJSON (String s) = pure (File s)
   parseJSON (Object v) =
     File <$> v .: "name"
-  parseJSON _ = fail "‘files’ list entries must be strings or objects"
+  parseJSON _ = fail "‘source-files’ list entries must be strings or objects"
