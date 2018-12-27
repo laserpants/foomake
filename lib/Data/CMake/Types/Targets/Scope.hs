@@ -24,9 +24,9 @@ instance FromJSON a => FromJSON (ScopeGroup a) where
 class HasScope a where 
   setScope :: Scope -> a -> a
 
-ungroup :: HasScope a => Maybe (ScopeGroup a) -> [a]
-ungroup Nothing = []
-ungroup (Just group) = fmap (setScope Public) public
-                    ++ fmap (setScope Private) private
-                    ++ fmap (setScope Interface) interface
+ungroup :: HasScope a => ScopeGroup a -> [a]
+ungroup group = fmap (setScope Public) public
+             ++ fmap (setScope Private) private
+             ++ fmap (setScope Interface) interface
   where ScopeGroup public private interface = group
+

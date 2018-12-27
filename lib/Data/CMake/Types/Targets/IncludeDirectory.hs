@@ -28,10 +28,8 @@ instance FromJSON IncludeDirectory where
 instance HasScope IncludeDirectory where
   setScope scope dir = dir{ includeScope = scope }
 
-prop :: FromJSON a => Object -> Parser (Maybe a)
-prop v = parseAlias v "include-directories" "include-dirs"
-
 parseIncludeDirectories :: Object -> Parser [IncludeDirectory]
-parseIncludeDirectories v = dict v <|> list v where
-    dict = liftM ungroup . prop
-    list = liftM (join . maybeToList) . prop
+parseIncludeDirectories v = join . maybeToList <$> parser where
+    parser :: Parser (Maybe [IncludeDirectory])
+    parser = fmap fmap fmap ungroup (prop v) <|> prop v
+    prop v = parseAlias v "include-directories" "include-dirs"

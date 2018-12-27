@@ -335,6 +335,26 @@ The following keys appear in mappings of both types.
 
 ## Dependencies
 
+```yaml
+name: example
+find-package: 
+  - name: Boost
+    version: '1.55'
+    components: 'asio'
+
+executables:
+  main:
+    link-libraries:
+      - Boost::boost
+```
+
+```yaml
+name: example
+find-package: 
+  - Boost
+```
+
+
 ## Examples
 
 The following examples are adapted from https://cmake.org/cmake-tutorial/

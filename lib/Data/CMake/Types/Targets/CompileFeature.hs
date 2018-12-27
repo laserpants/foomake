@@ -28,6 +28,7 @@ instance HasScope CompileFeature where
   setScope scope feature = feature{ featureScope = scope }
 
 parseCompileFeatures :: Object -> Parser [CompileFeature]
-parseCompileFeatures v = dict <|> list where
-    dict = liftM ungroup (v .:? "compile-features")
-    list = liftM (join . maybeToList) (v .:? "compile-features")
+parseCompileFeatures v = join . maybeToList <$> parser where
+    parser :: Parser (Maybe [CompileFeature])
+    parser = fmap fmap fmap ungroup (prop v) <|> prop v
+    prop v = v .:? "compile-features"
